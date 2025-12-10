@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15.6 Trig Graphs & Obtuse Angles</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 40px; line-height: 1.5; color: #333; }
+        .header-info { border-bottom: 2px solid #2c3e50; padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .student-field { border-bottom: 1px solid #999; width: 150px; display: inline-block; }
+        h1 { text-align: center; color: #2c3e50; font-size: 1.8em; margin: 10px 0; }
+        h2 { color: #2980b9; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 25px; font-size: 1.3em; }
+        .intro-box { background: #f8f9fa; border-left: 4px solid #2980b9; padding: 15px; font-size: 0.95em; }
+        .image-placeholder { text-align: center; margin: 15px 0; border: 2px dashed #ccc; padding: 20px; color: #777; background: #fff; }
+        .question-container { margin-bottom: 15px; break-inside: avoid; border: 1px solid #eee; padding: 10px; border-radius: 4px; }
+        .working-space { height: 100px; border: 1px dashed #ccc; background: #fffdfc; margin-top: 8px; }
+        .hw-space { height: 120px; }
+        .answer-box { background: #e8f5e9; padding: 8px; border-left: 4px solid #27ae60; display: none; margin-top: 8px; font-size: 0.9em; }
+        .btn { background: #3498db; color: white; border: none; padding: 4px 10px; cursor: pointer; border-radius: 3px; font-size: 0.8em; margin-top: 5px; }
+        .page-break { page-break-before: always; }
+        .footer { text-align: center; font-size: 0.8em; color: #777; margin-top: 20px; }
+        .print-controls { background: #f0f0f0; padding: 15px; border-radius: 8px; text-align: center; margin: 20px 0; border: 2px solid #3498db; }
+        .print-controls label { font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-size: 1.1em; }
+        .print-controls input[type="checkbox"] { width: 20px; height: 20px; cursor: pointer; }
+        @media print { 
+            .no-print, .btn { display: none !important; } 
+            .working-space { border: 1px solid #eee; } 
+            body { padding: 0; } 
+            .answer-box { display: none !important; }
+            body.print-answers .answer-box { display: block !important; background: #f0f0f0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="print-controls no-print">
+        <label>
+            <input type="checkbox" id="printAnswers" onchange="togglePrintAnswers()">
+            🖨️ Print with Answers (check before printing)
+        </label>
+    </div>
+
+    <div class="header-info">
+        <div><strong>Chapter 15.6: Trig Graphs & Obtuse Angles</strong><br>IGCSE Mathematics (0580)</div>
+        <div style="text-align: right;">
+            Name: <span class="student-field"></span><br>
+            Date: <span class="student-field"></span>
+        </div>
+    </div>
+
+    <h2>Part 1: Key Concepts (0° to 360°)</h2>
+    <div class="intro-box">
+        <p><strong>1. Visualizing the Graphs:</strong></p>
+        
+       <div style="text-align: center; margin: 20px 0;">
+    <img src="15.6_graphs.png" alt="Sine and Cosine Graphs" style="max-width: 80%; height: auto; border: 1px solid #ddd;">
+</div>
+
+        <p><strong>2. The Sine Wave (Top Graph):</strong></p>
+        <ul>
+            <li>Starts at 0, peaks at 1 (\(90^\circ\)), drops to 0 (\(180^\circ\)).</li>
+            <li><strong>Obtuse Angles (90°-180°):</strong> The graph is ABOVE the line. Sine is <span style="color:green;font-weight:bold;">POSITIVE</span>.</li>
+            <li><strong>Rule:</strong> \( \sin(180 - x) = \sin(x) \).</li>
+        </ul>
+        <p><strong>3. The Cosine Wave (Bottom Graph):</strong></p>
+        <ul>
+            <li>Starts at 1, drops to 0 (\(90^\circ\)), bottoms at -1 (\(180^\circ\)).</li>
+            <li><strong>Obtuse Angles (90°-180°):</strong> The graph is BELOW the line. Cosine is <span style="color:red;font-weight:bold;">NEGATIVE</span>.</li>
+            <li><strong>Rule:</strong> \( \cos(180 - x) = - \cos(x) \).</li>
+        </ul>
+    </div>
+
+    <h2>Part 2: In-Class Examples</h2>
+    <div class="question-container">
+        <div><strong>Ex 1.</strong> Without a calculator, write down the value of \( \sin(150^\circ) \).</div>
+        <div class="working-space"></div>
+        <button class="btn no-print" onclick="toggle('a1')">Show Answer</button>
+        <div id="a1" class="answer-box">
+            Look at the graph symmetry: \( \sin(150) = \sin(180-150) = \sin(30) \). <br>
+            We know \( \sin(30) = 0.5 \).
+        </div>
+    </div>
+    
+    <div class="question-container">
+        <div><strong>Ex 2.</strong> Solve \( \sin x = 0.5 \) for \( 0^\circ \le x \le 180^\circ \).</div>
+        <div class="working-space"></div>
+        <button class="btn no-print" onclick="toggle('a2')">Show Answer</button>
+        <div id="a2" class="answer-box">
+            Calculator: \( x = 30^\circ \). <br>
+            Graph Symmetry (180 - 30): \( x = 150^\circ \). <br>
+            Answers: <strong>30° and 150°</strong>.
+        </div>
+    </div>
+
+    <div class="footer">Page 1</div>
+    <div class="page-break"></div>
+
+    <div class="header-info">
+        <div><strong>Part 3: Homework Practice</strong></div>
+        <div>Chapter 15.6</div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q1. (Signs)</strong> State whether the following values are Positive or Negative (refer to the graphs): <br> (a) \( \sin 100^\circ \) &nbsp;&nbsp; (b) \( \cos 100^\circ \) &nbsp;&nbsp; (c) \( \tan 100^\circ \)</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h1')">Show Answer</button>
+        <div id="h1" class="answer-box">
+            (a) Positive (Graph is above axis). <br>
+            (b) Negative (Graph is below axis). <br>
+            (c) Negative (Tan is sin/cos = pos/neg).
+        </div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q2. (Symmetry)</strong> Given that \( \sin 40^\circ \approx 0.643 \), find another angle between \( 0^\circ \) and \( 180^\circ \) that has the same sine value.</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h2')">Show Answer</button>
+        <div id="h2" class="answer-box">
+            Using \( \sin(180-x) = \sin x \): <br>
+            Angle = \( 180 - 40 = 140^\circ \).
+        </div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q3. (Exact Values)</strong> Without a calculator, find the exact value of \( \cos 120^\circ \).</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h3')">Show Answer</button>
+        <div id="h3" class="answer-box">
+            Obtuse Cosine is negative. <br>
+            \( \cos 120 = -\cos(180-120) = -\cos 60 \). <br>
+            Exact value = <strong>-0.5</strong>.
+        </div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q4. (Solving Equations)</strong> Solve \( 2 \sin x = 1 \) for \( 0^\circ \le x \le 360^\circ \).</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h4')">Show Answer</button>
+        <div id="h4" class="answer-box">
+            Isolate sin: \( \sin x = 0.5 \). <br>
+            Ref angle = 30°. Positive sin means Quad 1 & 2. <br>
+            Solutions: <strong>30° and 150°</strong>.
+        </div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q5. (Graph Sketching)</strong> Sketch the graph of \( y = \cos x \) for \( 0^\circ \le x \le 360^\circ \) in the space below. Label the points where the graph crosses the x-axis.</div>
+        <div class="working-space hw-space" style="height: 150px;"></div>
+        <button class="btn no-print" onclick="toggle('h5')">Show Answer</button>
+        <div id="h5" class="answer-box">
+            Starts at (0,1). <br>
+            Crosses x-axis at <strong>90°</strong> and <strong>270°</strong>. <br>
+            Minimum at (180, -1). Ends at (360, 1).
+        </div>
+    </div>
+
+    <div class="footer">Page 2</div>
+
+    <script>
+        function toggle(id){var x=document.getElementById(id);x.style.display=x.style.display==='block'?'none':'block';}
+        function togglePrintAnswers(){document.body.classList.toggle('print-answers',document.getElementById('printAnswers').checked);}
+    </script>
+</body>
+</html>

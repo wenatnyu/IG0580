@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IGCSE Math 0580 Practice - Algebra & Quadratics</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        .header-info {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        .question-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .topic-tag {
+            display: inline-block;
+            background-color: #3498db;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+        }
+        .marks {
+            float: right;
+            font-weight: bold;
+            color: #7f8c8d;
+        }
+        .answer-section {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #ccc;
+            display: none; /* Hidden by default */
+            color: #27ae60;
+            font-weight: bold;
+        }
+        button {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 20px auto;
+        }
+        button:hover {
+            background-color: #34495e;
+        }
+        /* Mathematical notation styling */
+        sup {
+            font-size: 0.75em;
+        }
+    </style>
+    <script>
+        function toggleAnswers() {
+            var answers = document.getElementsByClassName("answer-section");
+            var btn = document.getElementById("toggleBtn");
+            var isHidden = answers[0].style.display === "none" || answers[0].style.display === "";
+            
+            for (var i = 0; i < answers.length; i++) {
+                answers[i].style.display = isHidden ? "block" : "none";
+            }
+            btn.innerHTML = isHidden ? "Hide Answers / 隐藏答案" : "Show Answers / 显示答案";
+        }
+    </script>
+</head>
+<body>
+
+    <h1>IGCSE Mathematics (0580) 专项练习</h1>
+
+    <div class="header-info">
+        <p><strong>Topic Focus:</strong> Algebra & Graphs (Extended Curriculum)</p>
+        <p><strong>Based on:</strong> Chapter 14 (Simultaneous Linear Equations, Inequalities, Quadratics) and Syllabus 2025-2027.</p>
+        <p><strong>Note:</strong> 建议在无计算器的情况下完成大部分题目（Paper 2 风格），涉及 Quadratic Formula 的题目可使用计算器（Paper 4 风格）。</p>
+    </div>
+
+    <div class="question-card">
+        <span class="topic-tag">14.1 Simultaneous Linear Equations</span>
+        <span class="marks">[3 marks]</span>
+        <p><strong>1.</strong> Solve the simultaneous equations.</p>
+        <p style="text-align: center;">
+            5x - 2y = 16<br>
+            3x + 4y = 7
+        </p>
+        <div class="answer-section">
+            Answer: x = 3, y = -0.5
+        </div>
+    </div>
+
+    <div class="question-card">
+        <span class="topic-tag">14.2 Linear Inequalities</span>
+        <span class="marks">[3 marks]</span>
+        <p><strong>2.</strong> Solve the inequality.</p>
+        <p style="text-align: center;">
+            3(x - 2) &lt; 5x + 4
+        </p>
+        <p>Show your solution on a number line.</p>
+        <div class="answer-section">
+            Answer: x > -5 (Open circle at -5, arrow to the right)
+        </div>
+    </div>
+
+    <div class="question-card">
+        <span class="topic-tag">14.2 Linear Inequalities</span>
+        <span class="marks">[3 marks]</span>
+        <p><strong>3.</strong> Find the integer values of n that satisfy the inequality.</p>
+        <p style="text-align: center;">
+            -7 &le; 3n - 1 &lt; 8
+        </p>
+        <div class="answer-section">
+            Answer: -2, -1, 0, 1, 2
+        </div>
+    </div>
+
+    <div class="question-card">
+        <span class="topic-tag">14.3 Regions in a plane</span>
+        <span class="marks">[3 marks]</span>
+        <p><strong>4.</strong> By shading the <strong>unwanted</strong> regions of the grid, find and label the region R that satisfies the following three inequalities:</p>
+        <p style="text-align: center;">
+            y &ge; 2<br>
+            x &ge; 1<br>
+            y &le; -2x + 8
+        </p>
+        <p><em>(Note: You can check if the point (2, 3) lies in this region.)</em></p>
+        <div class="answer-section">
+            Answer: The region is a triangle with vertices at (1,2), (1,6), and (3,2). Point (2,3) is inside.
+        </div>
+    </div>
+
+    <div class="question-card">
+        <span class="topic-tag">14.6 Factorising Quadratics (a &ne; 1)</span>
+        <span class="marks">[2 marks]</span>
+        <p><strong>5.</strong> Factorise completely.</p>
+        <p style="text-align: center;">
+            2x<sup>2</sup> + 7x - 4
+        </p>
+        <div class="answer-section">
+            Answer: (2x - 1)(x + 4)
+        </div>
+    </div>
+
+    <div class="question-card">
+        <span class="topic-tag">14.6 Factorising Quadratics (a &ne; 1)</span>
+        <span class="marks">[3 marks]</span>
+        <p><strong>6.</strong> Factorise completely.</p>
+        <p style="text-align: center;">
+            6x<sup>2</sup> - 13x + 6
+        </p>
+        <div class="answer-section">
+            Answer: (2x - 3)(3x - 2)
+        </div>
+    </div>
+
+    <div class="question-card">
+        <span class="topic-tag">14.4 Completing the Square</span>
+        <span class="marks">[3 marks]</span>
+        <p><strong>7.</strong> Write the expression <strong>x<sup>2</sup> - 8x + 5</strong> in the form <strong>(x + a)<sup>2</sup> + b</strong>.</p>
+        <div class="answer-section">
+            Answer: (x - 4)<sup>2</sup> - 11
+        </div>
+    </div>
+
+    <div class="question-card">
+        <span class="topic-tag">14.4 Completing the Square (Advanced)</span>
+        <span class="marks">[4 marks]</span>
+        <p><strong>8.</strong> Write <strong>2x<sup>2</sup> + 12x + 7</strong> in the form <strong>a(x + b)<sup>2</sup> + c</strong>.</p>
+        <div class="answer-section">
+            Answer: 2(x + 3)<sup>2</sup> - 11
+        </div>
+    </div>
+
+    <div class="question-card">
+        <span class="topic-tag">14.5 Quadratic Formula</span>
+        <span class="marks">[4 marks]</span>
+        <p><strong>9.</strong> Solve the equation using the quadratic formula. Show all your working and give your answers correct to 2 decimal places.</p>
+        <p style="text-align: center;">
+            3x<sup>2</sup> - 2x - 7 = 0
+        </p>
+        <div class="answer-section">
+            Answer: x = 1.89 or x = -1.23
+        </div>
+    </div>
+
+    <div class="question-card">
+        <span class="topic-tag">14.4 & 14.5 Solving Quadratics (Surds)</span>
+        <span class="marks">[4 marks]</span>
+        <p><strong>10.</strong> Solve the equation by completing the square or using the formula. Give your answers in exact form (using surds).</p>
+        <p style="text-align: center;">
+            x<sup>2</sup> + 6x - 2 = 0
+        </p>
+        <div class="answer-section">
+            Answer: x = -3 + &radic;11 or x = -3 - &radic;11
+        </div>
+    </div>
+
+    <button id="toggleBtn" onclick="toggleAnswers()">Show Answers / 显示答案</button>
+
+</body>
+</html>

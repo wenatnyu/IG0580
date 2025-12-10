@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15.2 Bearings</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 40px; line-height: 1.5; color: #333; }
+        .header-info { border-bottom: 2px solid #2c3e50; padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .student-field { border-bottom: 1px solid #999; width: 150px; display: inline-block; }
+        h1 { text-align: center; color: #2c3e50; font-size: 1.8em; margin: 10px 0; }
+        h2 { color: #2980b9; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 25px; font-size: 1.3em; }
+        .intro-box { background: #f8f9fa; border-left: 4px solid #2980b9; padding: 15px; font-size: 0.95em; }
+        .vocab { font-weight: bold; color: #c0392b; }
+        .question-container { margin-bottom: 15px; break-inside: avoid; border: 1px solid #eee; padding: 10px; border-radius: 4px; }
+        .working-space { height: 80px; border: 1px dashed #ccc; background: #fffdfc; margin-top: 8px; }
+        .hw-space { height: 110px; }
+        .answer-box { background: #e8f5e9; padding: 8px; border-left: 4px solid #27ae60; display: none; margin-top: 8px; font-size: 0.9em; }
+        .btn { background: #3498db; color: white; border: none; padding: 4px 10px; cursor: pointer; border-radius: 3px; font-size: 0.8em; margin-top: 5px; }
+        .page-break { page-break-before: always; }
+        .footer { text-align: center; font-size: 0.8em; color: #777; margin-top: 20px; }
+        .print-controls { background: #f0f0f0; padding: 15px; border-radius: 8px; text-align: center; margin: 20px 0; border: 2px solid #3498db; }
+        .print-controls label { font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-size: 1.1em; }
+        .print-controls input[type="checkbox"] { width: 20px; height: 20px; cursor: pointer; }
+        @media print { 
+            .no-print, .btn { display: none !important; } 
+            .working-space { border: 1px solid #eee; } 
+            body { padding: 0; } 
+            .answer-box { display: none !important; }
+            body.print-answers .answer-box { display: block !important; background: #f0f0f0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="print-controls no-print">
+        <label>
+            <input type="checkbox" id="printAnswers" onchange="togglePrintAnswers()">
+            🖨️ Print with Answers (check before printing)
+        </label>
+    </div>
+
+    <div class="header-info">
+        <div><strong>Chapter 15.2: Bearings</strong><br>IGCSE Mathematics (0580)</div>
+        <div style="text-align: right;">
+            Name: <span class="student-field"></span><br>
+            Date: <span class="student-field"></span>
+        </div>
+    </div>
+
+    <h2>Part 1: Key Concepts</h2>
+    <div class="intro-box">
+        <p><strong>Rules of Bearings:</strong></p>
+        <ol>
+            <li>Measure from <strong>North</strong> (000°).</li>
+            <li>Measure <strong>Clockwise</strong>.</li>
+            <li>Use <strong>3 Digits</strong> (e.g., \( 045^\circ \), \( 230^\circ \)).</li>
+        </ol>
+        <p><strong>Calculations:</strong></p>
+        <ul>
+            <li><span class="vocab">Back Bearing:</span> "A from B". If original is \( < 180 \), add 180. If \( > 180 \), subtract 180.</li>
+            <li><span class="vocab">Co-interior Angles:</span> North lines are parallel. Angles inside sum to \( 180^\circ \).</li>
+        </ul>
+    </div>
+
+    <h2>Part 2: In-Class Examples</h2>
+    <div class="question-container">
+        <div><strong>Ex 1.</strong> The bearing of ship B from ship A is \( 060^\circ \). Calculate the bearing of ship A from ship B.</div>
+        <div class="working-space"></div>
+        <button class="btn no-print" onclick="toggle('a1')">Show Answer</button>
+        <div id="a1" class="answer-box">Add 180: \( 60 + 180 = 240^\circ \).</div>
+    </div>
+    
+    <div class="question-container">
+        <div><strong>Ex 2.</strong> Point A is due South of Point B. Find the bearing of A from B, and B from A.</div>
+        <div class="working-space"></div>
+        <button class="btn no-print" onclick="toggle('a2')">Show Answer</button>
+        <div id="a2" class="answer-box">A from B (Start at B, look South): <strong>180°</strong>. <br> B from A (Start at A, look North): <strong>000°</strong> (or 360°).</div>
+    </div>
+
+    <div class="footer">Page 1</div>
+    <div class="page-break"></div>
+
+    <div class="header-info">
+        <div><strong>Part 3: Homework Practice</strong></div>
+        <div>Chapter 15.2</div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q1. (Basic)</strong> State the bearings of the following directions: <br> (a) Due East &nbsp; (b) South-East &nbsp; (c) North-West</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h1')">Show Answer</button>
+        <div id="h1" class="answer-box">(a) \( 090^\circ \) (b) \( 135^\circ \) (c) \( 315^\circ \)</div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q2. (Back Bearing)</strong> The bearing of Town X from Town Y is \( 215^\circ \). Calculate the bearing of Town Y from Town X.</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h2')">Show Answer</button>
+        <div id="h2" class="answer-box">Subtract 180: \( 215 - 180 = 035^\circ \).</div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q3. (Logic)</strong> A plane flies on a bearing of \( 120^\circ \). It then turns \( 90^\circ \) clockwise. What is the new bearing?</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h3')">Show Answer</button>
+        <div id="h3" class="answer-box">\( 120 + 90 = 210^\circ \).</div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q4. (Geometry)</strong> In triangle ABC, Point A is due North of Point B. The bearing of C from B is \( 040^\circ \). The bearing of C from A is \( 110^\circ \). <br> Calculate the angle \( \angle BCA \).</div>
+        <div class="working-space hw-space" style="height: 150px;"></div>
+        <button class="btn no-print" onclick="toggle('h4')">Show Answer</button>
+        <div id="h4" class="answer-box">
+            North at B goes up to A. So line AB is North-South. <br>
+            Bearing C from B = 040 implies \( \angle ABC = 40^\circ \). <br>
+            Bearing C from A = 110. North at A is parallel to North at B. <br>
+            Use geometry: \( \angle BAC = 180 - 110 = 70^\circ \). <br>
+            Angle sum: \( 180 - (40+70) = 70^\circ \).
+        </div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q5. (Challenge)</strong> A ship sails from P to Q on a bearing of \( 070^\circ \). It then sails from Q to R on a bearing of \( 160^\circ \). <br> Calculate the angle \( \angle PQR \). <em>(Hint: Sketch the North line at Q).</em></div>
+        <div class="working-space hw-space" style="height: 150px;"></div>
+        <button class="btn no-print" onclick="toggle('h5')">Show Answer</button>
+        <div id="h5" class="answer-box">
+            Back bearing of P from Q = \( 070 + 180 = 250^\circ \). <br>
+            Bearing of R from Q = \( 160^\circ \). <br>
+            Angle PQR = Difference = \( 250 - 160 = 90^\circ \).
+        </div>
+    </div>
+
+    <div class="footer">Page 2</div>
+
+    <script>
+        function toggle(id){var x=document.getElementById(id);x.style.display=x.style.display==='block'?'none':'block';}
+        function togglePrintAnswers(){document.body.classList.toggle('print-answers',document.getElementById('printAnswers').checked);}
+    </script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14.7 Algebraic Fractions</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2C3E50;
+            text-align: center;
+        }
+        h1 {
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        h3 {
+            font-size: 18px;
+            margin-top: 15px;
+        }
+        .section {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .section p, .section ul, .section ol {
+            margin-bottom: 10px;
+        }
+        .problem, .homework {
+            margin-bottom: 15px;
+        }
+        /* General equation block style (instead of <pre>) */
+        .equation {
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        .homework-section {
+            page-break-before: always;
+            margin-top: 30px;
+        }
+        .answer-placeholder {
+            border: 1px dashed #BDC3C7;
+            height: 80px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .answer-label {
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: 4px;
+            margin-bottom: 2px;
+        }
+        .section-title {
+            color: #2980B9;
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        ul.question-list, ol.question-list {
+            margin-left: 20px;
+        }
+        ul.question-list li, ol.question-list li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>14.7 Algebraic Fractions / 代数分式</h1>
+
+    <!-- Section 1: Intro Problems -->
+    <div class="section">
+        <h2>1. Intro Problems (10 minutes) / 引入问题（10 分钟）</h2>
+        
+        <p><strong>Objective / 目标：</strong>
+            To introduce algebraic fractions, remind students about simplifying numeric fractions, and link the idea of “common factor” and “common denominator” to algebraic expressions. <br>
+            介绍代数分式，复习分数化简，并将“公因式、公分母”的概念延伸到代数式。
+        </p>
+
+        <h3 class="section-title">Problem 1: From numeric to algebraic / 从数字分数到代数分式</h3>
+        <p>Simplify the fractions. / 化简下列分数：</p>
+        <ol class="question-list">
+            <li>\(\dfrac{12}{18}\)</li>
+            <li>\(\dfrac{15}{35}\)</li>
+        </ol>
+        <p>Ask: “What did you do?” (Divide by a common factor.)<br>
+           提问：“你做了什么操作？”（用公因数约分。）
+        </p>
+
+        <h3 class="section-title">Problem 2: First algebraic fraction / 第一个代数分式</h3>
+        <p>Now simplify the algebraic fraction. / 现在化简代数分式：</p>
+        <div class="equation">\(\dfrac{6x}{9x}\)</div>
+        <ul class="question-list">
+            <li>What can we cancel? / 可以约去什么？</li>
+            <li>What must we say about \(x\)? / 关于 \(x\) 需要说明什么？</li>
+        </ul>
+        <p>
+            Emphasise: denominator cannot be zero, so here \(x \neq 0\).<br>
+            强调：分母不能为 0，所以此处 \(x \neq 0\)。
+        </p>
+
+        <h3 class="section-title">Problem 3: Algebraic fraction with factorising / 带因式分解的代数分式</h3>
+        <p>Consider: / 思考：</p>
+        <div class="equation">\(\dfrac{x^{2} - 9}{x^{2} - 3x}\)</div>
+        <p>Guide steps / 引导步骤：</p>
+        <ol class="question-list">
+            <li>Factorise numerator and denominator. / 对分子、分母分别因式分解。</li>
+            <li>Cancel common factors. / 约去公因式。</li>
+            <li>State restrictions on \(x\). / 写出 \(x\) 的取值限制。</li>
+        </ol>
+        <p>
+            This connects 14.6 factorising with algebraic fractions. <br>
+            这一步把 14.6 的因式分解和本节代数分式联系起来。
+        </p>
+    </div>
+
+    <!-- Section 2: In-Class Practice -->
+    <div class="section">
+        <h2>2. In-Class Practice (20 minutes) / 课堂练习（20 分钟）</h2>
+        
+        <p><strong>Objective / 目标：</strong>
+            To practise simplifying, adding, subtracting, multiplying and dividing simple algebraic fractions. <br>
+            练习代数分式的化简、加减乘除。
+        </p>
+
+        <h3 class="section-title">Practice 1: Simplifying algebraic fractions / 化简代数分式</h3>
+        <p>Simplify each expression and state any restrictions on the variable. / 化简并写出变量的限制条件：</p>
+        <ol class="question-list">
+            <li>\(\dfrac{4x}{10x}\)</li>
+            <li>\(\dfrac{x^{2} - 16}{x^{2} - 4x}\)</li>
+            <li>\(\dfrac{3x^{2} + 6x}{9x}\)</li>
+        </ol>
+
+        <h3 class="section-title">Practice 2: Adding and subtracting / 分式的加减</h3>
+        <p>Perform the operations and simplify your answers. / 进行加减运算，并化简结果：</p>
+        <ol class="question-list">
+            <li>\(\dfrac{2}{x} + \dfrac{3}{x}\)</li>
+            <li>\(\dfrac{1}{x} + \dfrac{2}{x+1}\)</li>
+            <li>\(\dfrac{3}{x-2} - \dfrac{1}{x-2}\)</li>
+        </ol>
+
+        <h3 class="section-title">Practice 3: Multiplying and dividing / 分式的乘除</h3>
+        <p>Multiply or divide and simplify. / 进行乘除运算并化简：</p>
+        <ol class="question-list">
+            <li>\(\dfrac{2x}{3} \times \dfrac{9}{x}\)</li>
+            <li>\(\dfrac{x+1}{2x} \div \dfrac{x+1}{4}\)</li>
+        </ol>
+
+        <p><strong>Tips / 提示：</strong>
+            Before adding or subtracting, use a common denominator. For multiplying and dividing, factorise and cancel before multiplying. <br>
+            加减前先找公分母；乘除时先因式分解、约分，再进行运算。
+        </p>
+    </div>
+
+    <!-- Section 3: After Class Homework -->
+    <div class="homework-section">
+        <h2>3. After Class Homework (about 20 minutes) / 课后作业（约 20 分钟）</h2>
+        
+        <p><strong>Objective / 目标：</strong>
+            To consolidate skills in simplifying and operating with algebraic fractions, and to apply them in simple equations and word problems. <br>
+            巩固代数分式的化简与运算，并在方程和应用题中加以运用。
+        </p>
+
+        <!-- Homework 1 -->
+        <h3 class="section-title">Homework 1: Simplify the algebraic fractions / 作业 1：化简代数分式</h3>
+        <p>Simplify each expression and state any restrictions on the variable. / 化简并写出变量的取值限制：</p>
+        <ul class="question-list">
+            <li>
+                \(\dfrac{5x}{15x}\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+            <li>
+                \(\dfrac{x^{2} - 25}{x^{2} - 5x}\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+            <li>
+                \(\dfrac{2x^{2} + 6x}{4x}\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+            <li>
+                \(\dfrac{x^{2} - 1}{x^{2} + x}\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+        </ul>
+
+        <!-- Homework 2 -->
+        <h3 class="section-title">Homework 2: Adding and subtracting algebraic fractions / 作业 2：代数分式的加减</h3>
+        <p>Evaluate and simplify. / 计算并化简：</p>
+        <ul class="question-list">
+            <li>
+                \(\dfrac{3}{x} + \dfrac{5}{x}\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+            <li>
+                \(\dfrac{1}{x} + \dfrac{1}{x+2}\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+            <li>
+                \(\dfrac{5}{x-1} - \dfrac{2}{x-1}\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+            <li>
+                \(\dfrac{2}{x+3} - \dfrac{1}{x}\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+        </ul>
+
+        <!-- Homework 3 -->
+        <h3 class="section-title">Homework 3: Multiplying and dividing algebraic fractions / 作业 3：代数分式的乘除</h3>
+        <p>Multiply or divide and simplify your answers. / 进行乘除运算，并化简答案：</p>
+        <ul class="question-list">
+            <li>
+                \(\dfrac{3x}{4} \times \dfrac{8}{9x}\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+            <li>
+                \(\dfrac{x+2}{3x} \times \dfrac{9}{2(x+2)}\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+            <li>
+                \(\dfrac{2x}{x-1} \div \dfrac{4}{x-1}\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+        </ul>
+
+        <!-- Homework 4 -->
+        <h3 class="section-title">Homework 4: Equations with algebraic fractions / 作业 4：含代数分式的方程</h3>
+        <p>Solve the equations. / 解下列方程：</p>
+        <ul class="question-list">
+            <li>
+                \(\dfrac{2}{x} = 1\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+            <li>
+                \(\dfrac{3}{x+1} = \dfrac{1}{2}\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+            <li>
+                \(\dfrac{x}{x-2} = 2\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+        </ul>
+
+        <!-- Homework 5 -->
+        <h3 class="section-title">Homework 5: Word problems / 作业 5：应用题</h3>
+        <p><strong>(a)</strong> A car travels at a speed of \(\dfrac{100}{x}\) km/h, where \(x\) is a positive number. <br>
+           汽车以 \(\dfrac{100}{x}\) 千米/小时的速度行驶，其中 \(x\) 为正数。</p>
+        <ul class="question-list">
+            <li>
+                If \(x = 4\), find the speed. / 当 \(x = 4\) 时，求这辆车的速度。
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+        </ul>
+
+        <p><strong>(b)</strong> The area of a rectangle is given by \(\dfrac{6x}{x+2}\). The width is 2. <br>
+           一个矩形的面积是 \(\dfrac{6x}{x+2}\)，宽为 2。</p>
+        <ul class="question-list">
+            <li>
+                Express the length in terms of \(x\). / 用 \(x\) 表示矩形的长。
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>

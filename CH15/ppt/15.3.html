@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15.3 Trigonometry</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 40px; line-height: 1.5; color: #333; }
+        .header-info { border-bottom: 2px solid #2c3e50; padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .student-field { border-bottom: 1px solid #999; width: 150px; display: inline-block; }
+        h1 { text-align: center; color: #2c3e50; font-size: 1.8em; margin: 10px 0; }
+        h2 { color: #2980b9; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 25px; font-size: 1.3em; }
+        .intro-box { background: #f8f9fa; border-left: 4px solid #2980b9; padding: 15px; font-size: 0.95em; }
+        .vocab { font-weight: bold; color: #c0392b; }
+        .question-container { margin-bottom: 15px; break-inside: avoid; border: 1px solid #eee; padding: 10px; border-radius: 4px; }
+        .working-space { height: 80px; border: 1px dashed #ccc; background: #fffdfc; margin-top: 8px; }
+        .hw-space { height: 110px; }
+        .answer-box { background: #e8f5e9; padding: 8px; border-left: 4px solid #27ae60; display: none; margin-top: 8px; font-size: 0.9em; }
+        .btn { background: #3498db; color: white; border: none; padding: 4px 10px; cursor: pointer; border-radius: 3px; font-size: 0.8em; margin-top: 5px; }
+        .page-break { page-break-before: always; }
+        .footer { text-align: center; font-size: 0.8em; color: #777; margin-top: 20px; }
+        .print-controls { background: #f0f0f0; padding: 15px; border-radius: 8px; text-align: center; margin: 20px 0; border: 2px solid #3498db; }
+        .print-controls label { font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-size: 1.1em; }
+        .print-controls input[type="checkbox"] { width: 20px; height: 20px; cursor: pointer; }
+        @media print { 
+            .no-print, .btn { display: none !important; } 
+            .working-space { border: 1px solid #eee; } 
+            body { padding: 0; } 
+            .answer-box { display: none !important; }
+            body.print-answers .answer-box { display: block !important; background: #f0f0f0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="print-controls no-print">
+        <label>
+            <input type="checkbox" id="printAnswers" onchange="togglePrintAnswers()">
+            🖨️ Print with Answers (check before printing)
+        </label>
+    </div>
+
+    <div class="header-info">
+        <div><strong>Chapter 15.3: Trigonometry</strong><br>IGCSE Mathematics (0580)</div>
+        <div style="text-align: right;">
+            Name: <span class="student-field"></span><br>
+            Date: <span class="student-field"></span>
+        </div>
+    </div>
+
+    <h2>Part 1: Key Concepts (SOH CAH TOA)</h2>
+    <div class="intro-box">
+        <p><strong>Right-Angled Triangles Only:</strong></p>
+        <ul>
+            <li>\( \sin \theta = \frac{\text{Opposite}}{\text{Hypotenuse}} \)</li>
+            <li>\( \cos \theta = \frac{\text{Adjacent}}{\text{Hypotenuse}} \)</li>
+            <li>\( \tan \theta = \frac{\text{Opposite}}{\text{Adjacent}} \)</li>
+        </ul>
+        <p><strong>Finding a Side:</strong> Use algebra (multiply or swap). <br>
+           <strong>Finding an Angle:</strong> Use inverse functions (\( \sin^{-1}, \cos^{-1}, \tan^{-1} \)).</p>
+    </div>
+
+    <h2>Part 2: In-Class Examples</h2>
+    <div class="question-container">
+        <div><strong>Ex 1. (Find Side)</strong> Hypotenuse = 12 cm, Angle = \( 35^\circ \). Find the Opposite side.</div>
+        <div class="working-space"></div>
+        <button class="btn no-print" onclick="toggle('a1')">Show Answer</button>
+        <div id="a1" class="answer-box">\( \sin 35 = \frac{x}{12} \Rightarrow x = 12 \times \sin 35 \approx 6.88 \).</div>
+    </div>
+    
+    <div class="question-container">
+        <div><strong>Ex 2. (Find Angle)</strong> Opposite = 8 cm, Adjacent = 6 cm. Find angle \( \theta \).</div>
+        <div class="working-space"></div>
+        <button class="btn no-print" onclick="toggle('a2')">Show Answer</button>
+        <div id="a2" class="answer-box">\( \tan \theta = \frac{8}{6} \Rightarrow \theta = \tan^{-1}(1.333) \approx 53.1^\circ \).</div>
+    </div>
+
+    <div class="footer">Page 1</div>
+    <div class="page-break"></div>
+
+    <div class="header-info">
+        <div><strong>Part 3: Homework Practice</strong></div>
+        <div>Chapter 15.3</div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q1. (Find Hypotenuse)</strong> A right-angled triangle has an angle of \( 40^\circ \) and an adjacent side of 10 cm. Calculate the length of the hypotenuse.</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h1')">Show Answer</button>
+        <div id="h1" class="answer-box">\( \cos 40 = \frac{10}{H} \Rightarrow H = \frac{10}{\cos 40} \approx 13.1 \text{ cm} \).</div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q2. (Ladder Problem)</strong> A ladder 8m long rests against a vertical wall. The base of the ladder is 2.5m from the wall. Calculate the angle the ladder makes with the ground.</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h2')">Show Answer</button>
+        <div id="h2" class="answer-box">Adj = 2.5, Hyp = 8. Use Cos. <br> \( \cos x = \frac{2.5}{8} \Rightarrow x = \cos^{-1}(0.3125) \approx 71.8^\circ \).</div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q3. (Rectangle)</strong> A rectangle measures 15 cm by 8 cm. Calculate the length of the diagonal and the angle the diagonal makes with the longer side.</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h3')">Show Answer</button>
+        <div id="h3" class="answer-box">Diagonal (Pythagoras): \( \sqrt{15^2+8^2} = 17 \text{ cm} \). <br> Angle (tan): \( \tan x = \frac{8}{15} \Rightarrow x \approx 28.1^\circ \).</div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q4. (Elevation)</strong> A tree casts a shadow 20m long when the sun's angle of elevation is \( 55^\circ \). Calculate the height of the tree.</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h4')">Show Answer</button>
+        <div id="h4" class="answer-box">Adj = 20, Angle = 55. Find Opp. <br> \( \tan 55 = \frac{h}{20} \Rightarrow h = 20 \times \tan 55 \approx 28.6 \text{ m} \).</div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q5. (Harder Algebra)</strong> In a triangle, \( \sin x = 0.6 \). If the Hypotenuse is 15 cm, find the length of the Opposite side without using a calculator for the angle.</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h5')">Show Answer</button>
+        <div id="h5" class="answer-box">\( \sin x = \frac{Opp}{Hyp} \Rightarrow 0.6 = \frac{Opp}{15} \). <br> \( Opp = 0.6 \times 15 = 9 \text{ cm} \).</div>
+    </div>
+
+    <div class="footer">Page 2</div>
+
+    <script>
+        function toggle(id){var x=document.getElementById(id);x.style.display=x.style.display==='block'?'none':'block';}
+        function togglePrintAnswers(){document.body.classList.toggle('print-answers',document.getElementById('printAnswers').checked);}
+    </script>
+</body>
+</html>

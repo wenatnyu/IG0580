@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14.4 Completing the Square - Practice Exercises</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 40px; line-height: 1.5; color: #333; }
+        .page-header { text-align: center; font-size: 0.95em; color: #555; border-bottom: 1px solid #ddd; padding-bottom: 6px; margin-bottom: 12px; }
+        .page-footer { text-align: center; font-size: 0.95em; color: #555; border-top: 1px solid #ddd; padding-top: 6px; margin-top: 12px; }
+        .header-info { border-bottom: 2px solid #2c3e50; padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .student-field { border-bottom: 1px solid #999; width: 150px; display: inline-block; }
+        h2 { color: #2980b9; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 25px; font-size: 1.3em; }
+        .page-title { text-align: center; color: #2980b9; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 5px; font-size: 1.4em; }
+        .intro-box { background: #f8f9fa; border-left: 4px solid #2980b9; padding: 15px; font-size: 0.95em; }
+        .question-container { margin-bottom: 15px; break-inside: avoid; border: 1px solid #eee; padding: 10px; border-radius: 4px; }
+        .working-space { height: 80px; border: 1px dashed #ccc; background: #fffdfc; margin-top: 8px; }
+        .hw-space { height: 110px; }
+        .answer-box { background: #e8f5e9; padding: 8px; border-left: 4px solid #27ae60; display: none; margin-top: 8px; font-size: 0.9em; }
+        .btn { background: #3498db; color: white; border: none; padding: 4px 10px; cursor: pointer; border-radius: 3px; font-size: 0.8em; margin-top: 5px; }
+        .page-break { page-break-before: always; }
+        .print-controls { background: #f0f0f0; padding: 15px; border-radius: 8px; text-align: center; margin: 20px 0; border: 2px solid #3498db; }
+        .print-controls label { font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-size: 1.1em; }
+        .print-controls input[type="checkbox"] { width: 20px; height: 20px; cursor: pointer; }
+        @media print { 
+            .no-print, .btn { display: none !important; } 
+            .working-space { border: 1px solid #eee; } 
+            body { padding: 0; } 
+            .answer-box { display: none !important; }
+            body.print-answers .answer-box { display: block !important; background: #f0f0f0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="print-controls no-print">
+        <label>
+            <input type="checkbox" id="printAnswers" onchange="togglePrintAnswers()">
+            🖨️ Print with Answers (check before printing)
+        </label>
+    </div>
+
+    <div class="page-header">IGCSE Mathematics (0580) • Chapter 14.4: Completing the Square - Exercises</div>
+    <div class="header-info">
+        <div><strong>Chapter 14.4: Completing the Square</strong><br>IGCSE Mathematics (0580) - Practice Exercises</div>
+        <div style="text-align: right;">
+            Name: <span class="student-field"></span><br>
+            Date: <span class="student-field"></span>
+        </div>
+    </div>
+
+    <h2>Part 1: Review - Completing the Square Method</h2>
+    <div class="intro-box">
+        <p><strong>Steps to Complete the Square:</strong></p>
+        <ol>
+            <li>Make sure the coefficient of \(x^2\) is 1</li>
+            <li>Take half of the coefficient of \(x\), square it, and add/subtract it</li>
+            <li>Write as \((x + p)^2 + q\) form</li>
+            <li>Solve by taking square roots</li>
+        </ol>
+        <p><strong>Example:</strong> \(x^2 + 6x + 5 = 0\)</p>
+        <p>Step 1: \(x^2 + 6x = -5\)</p>
+        <p>Step 2: Half of 6 is 3, squared is 9. Add 9 to both sides.</p>
+        <p>Step 3: \(x^2 + 6x + 9 = -5 + 9\) → \((x + 3)^2 = 4\)</p>
+        <p>Step 4: \(x + 3 = ±2\) → \(x = -1\) or \(x = -5\)</p>
+    </div>
+
+    <h2>Part 2: Practice Exercises</h2>
+    <div class="question-container">
+        <div><strong>Ex 1.</strong> Complete the square for \(x^2 + 10x - 3 = 0\) and solve.</div>
+        <div class="working-space"></div>
+        <button class="btn no-print" onclick="toggle('a1')">Show Answer</button>
+        <div id="a1" class="answer-box">
+            \(x^2 + 10x = 3\) <br>
+            Half of 10 is 5, squared is 25. <br>
+            \((x + 5)^2 = 3 + 25 = 28\) <br>
+            \(x + 5 = ±\sqrt{28} = ±2\sqrt{7}\) <br>
+            \(x = -5 ± 2\sqrt{7}\)
+        </div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Ex 2.</strong> Complete the square: \(x^2 - 4x + 1 = 0\)</div>
+        <div class="working-space"></div>
+        <button class="btn no-print" onclick="toggle('a2')">Show Answer</button>
+        <div id="a2" class="answer-box">
+            \(x^2 - 4x = -1\) <br>
+            Half of -4 is -2, squared is 4. <br>
+            \((x - 2)^2 = -1 + 4 = 3\) <br>
+            \(x = 2 ± \sqrt{3}\)
+        </div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Ex 3.</strong> Solve \(x^2 + 8x = 0\) by completing the square.</div>
+        <div class="working-space"></div>
+        <button class="btn no-print" onclick="toggle('a3')">Show Answer</button>
+        <div id="a3" class="answer-box">
+            Half of 8 is 4, squared is 16. <br>
+            \((x + 4)^2 = 0 + 16 = 16\) <br>
+            \(x + 4 = ±4\) <br>
+            \(x = 0\) or \(x = -8\)
+        </div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Ex 4.</strong> Solve \(x^2 - 12x + 11 = 0\)</div>
+        <div class="working-space"></div>
+        <button class="btn no-print" onclick="toggle('a4')">Show Answer</button>
+        <div id="a4" class="answer-box">
+            \(x^2 - 12x = -11\) <br>
+            Half of -12 is -6, squared is 36. <br>
+            \((x - 6)^2 = -11 + 36 = 25\) <br>
+            \(x - 6 = ±5\) <br>
+            \(x = 11\) or \(x = 1\)
+        </div>
+    </div>
+
+    <div class="page-footer">IGCSE Mathematics (0580) • Chapter 14.4 Exercises • Page 1</div>
+    <div class="page-break"></div>
+
+    <div class="page-header">IGCSE Mathematics (0580) • Chapter 14.4: Completing the Square - Exercises</div>
+    <h2 class="page-title">Part 3: Homework Practice</h2>
+
+    <div class="question-container">
+        <div><strong>Q1.</strong> Complete the square and solve: \(x^2 + 14x - 15 = 0\)</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h1')">Show Answer</button>
+        <div id="h1" class="answer-box">
+            \(x^2 + 14x = 15\) <br>
+            \((x + 7)^2 = 15 + 49 = 64\) <br>
+            \(x = -7 ± 8\) <br>
+            \(x = 1\) or \(x = -15\)
+        </div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q2.</strong> Solve \(x^2 - 2x + 5 = 0\) by completing the square.</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h2')">Show Answer</button>
+        <div id="h2" class="answer-box">
+            \(x^2 - 2x = -5\) <br>
+            \((x - 1)^2 = -5 + 1 = -4\) <br>
+            No real solutions (negative under square root)
+        </div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q3.</strong> Complete the square: \(x^2 + 4x + 3 = 0\)</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h3')">Show Answer</button>
+        <div id="h3" class="answer-box">
+            \(x^2 + 4x = -3\) <br>
+            \((x + 2)^2 = -3 + 4 = 1\) <br>
+            \(x + 2 = ±1\) <br>
+            \(x = -1\) or \(x = -3\)
+        </div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q4.</strong> Solve \(x^2 - 16x = 0\)</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h4')">Show Answer</button>
+        <div id="h4" class="answer-box">
+            \((x - 8)^2 = 0 + 64 = 64\) <br>
+            \(x = 8 ± 8\) <br>
+            \(x = 0\) or \(x = 16\)
+        </div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q5. (Application)</strong> The depth \(h\) of a pond is given by \(h = 3x^2 + 12x - 2\). Find the depth when \(x = -2\) hours.</div>
+        <div class="working-space hw-space" style="height: 80px;"></div>
+        <button class="btn no-print" onclick="toggle('h5')">Show Answer</button>
+        <div id="h5" class="answer-box">
+            \(h = 3(-2)^2 + 12(-2) - 2\) <br>
+            \(h = 3(4) - 24 - 2\) <br>
+            \(h = 12 - 24 - 2 = -14\) meters
+        </div>
+    </div>
+
+    <div class="page-footer">IGCSE Mathematics (0580) • Chapter 14.4 Exercises • Page 2</div>
+
+    <script>
+        function toggle(id){var x=document.getElementById(id);x.style.display=x.style.display==='block'?'none':'block';}
+        function togglePrintAnswers(){document.body.classList.toggle('print-answers',document.getElementById('printAnswers').checked);}
+    </script>
+</body>
+</html>

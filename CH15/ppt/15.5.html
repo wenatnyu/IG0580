@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15.5 Problem Solving with Trig</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 40px; line-height: 1.5; color: #333; }
+        .header-info { border-bottom: 2px solid #2c3e50; padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .student-field { border-bottom: 1px solid #999; width: 150px; display: inline-block; }
+        h1 { text-align: center; color: #2c3e50; font-size: 1.8em; margin: 10px 0; }
+        h2 { color: #2980b9; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 25px; font-size: 1.3em; }
+        .intro-box { background: #f8f9fa; border-left: 4px solid #2980b9; padding: 15px; font-size: 0.95em; }
+        .vocab { font-weight: bold; color: #c0392b; }
+        .question-container { margin-bottom: 15px; break-inside: avoid; border: 1px solid #eee; padding: 10px; border-radius: 4px; }
+        .working-space { height: 100px; border: 1px dashed #ccc; background: #fffdfc; margin-top: 8px; }
+        .hw-space { height: 130px; } /* More space for diagrams */
+        .answer-box { background: #e8f5e9; padding: 8px; border-left: 4px solid #27ae60; display: none; margin-top: 8px; font-size: 0.9em; }
+        .btn { background: #3498db; color: white; border: none; padding: 4px 10px; cursor: pointer; border-radius: 3px; font-size: 0.8em; margin-top: 5px; }
+        .page-break { page-break-before: always; }
+        .footer { text-align: center; font-size: 0.8em; color: #777; margin-top: 20px; }
+        .print-controls { background: #f0f0f0; padding: 15px; border-radius: 8px; text-align: center; margin: 20px 0; border: 2px solid #3498db; }
+        .print-controls label { font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-size: 1.1em; }
+        .print-controls input[type="checkbox"] { width: 20px; height: 20px; cursor: pointer; }
+        @media print { 
+            .no-print, .btn { display: none !important; } 
+            .working-space { border: 1px solid #eee; } 
+            body { padding: 0; } 
+            .answer-box { display: none !important; }
+            body.print-answers .answer-box { display: block !important; background: #f0f0f0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="print-controls no-print">
+        <label>
+            <input type="checkbox" id="printAnswers" onchange="togglePrintAnswers()">
+            🖨️ Print with Answers (check before printing)
+        </label>
+    </div>
+
+    <div class="header-info">
+        <div><strong>Chapter 15.5: Trigonometry Problems</strong><br>IGCSE Mathematics (0580)</div>
+        <div style="text-align: right;">
+            Name: <span class="student-field"></span><br>
+            Date: <span class="student-field"></span>
+        </div>
+    </div>
+
+    <h2>Part 1: Strategy & Vocabulary</h2>
+    <div class="intro-box">
+        <p><strong>1. Angles of Elevation & Depression:</strong></p>
+        <ul>
+            <li>Always measured from the <span class="vocab">Horizontal Line</span>.</li>
+            <li><strong>Angle of Depression</strong> (looking down) is equal to the <strong>Angle of Elevation</strong> (looking up) from the other point (Alternate Angles / Z-angles).</li>
+        </ul>
+        <p><strong>2. Strategy for Word Problems:</strong></p>
+        <ol>
+            <li><strong>Sketch:</strong> Draw a diagram. Label all lengths and angles.</li>
+            <li><strong>Triangle:</strong> Find the right-angled triangle.</li>
+            <li><strong>Choose:</strong> Select SOH, CAH, or TOA.</li>
+            <li><strong>Solve:</strong> Rearrange and calculate.</li>
+        </ol>
+    </div>
+
+    <h2>Part 2: In-Class Examples</h2>
+    <div class="question-container">
+        <div><strong>Ex 1. (Elevation)</strong> A man stands 50m away from the base of a tower. The angle of elevation to the top of the tower is \( 32^\circ \). The man's eyes are 1.8m above the ground. Calculate the total height of the tower.</div>
+        <div class="working-space"></div>
+        <button class="btn no-print" onclick="toggle('a1')">Show Answer</button>
+        <div id="a1" class="answer-box">
+            Triangle part height \( h \): \( \tan 32 = \frac{h}{50} \Rightarrow h = 50 \tan 32 \approx 31.24 \). <br>
+            Total Height = \( 31.24 + 1.8 = <strong>33.0 m</strong> \).
+        </div>
+    </div>
+    
+    <div class="question-container">
+        <div><strong>Ex 2. (Bearings Context)</strong> Ship A is 10 km due North of a lighthouse. Ship B is 10 km due East of the lighthouse. Calculate the bearing of Ship B from Ship A.</div>
+        <div class="working-space"></div>
+        <button class="btn no-print" onclick="toggle('a2')">Show Answer</button>
+        <div id="a2" class="answer-box">
+            Draw diagram. Isosceles right triangle (10km, 10km). <br>
+            Angle inside triangle at A is \( \tan^{-1}(10/10) = 45^\circ \). <br>
+            Bearing is from North line (which is line LA). Bearing = <strong>135°</strong>.
+        </div>
+    </div>
+
+    <div class="footer">Page 1</div>
+    <div class="page-break"></div>
+
+    <div class="header-info">
+        <div><strong>Part 3: Homework Practice</strong></div>
+        <div>Chapter 15.5</div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q1. (Basic Elevation)</strong> A kite is flying on a string of length 40m. The string makes an angle of \( 55^\circ \) with the horizontal ground. Assuming the string is straight, calculate the height of the kite above the ground.</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h1')">Show Answer</button>
+        <div id="h1" class="answer-box">Hyp = 40, Angle = 55, find Opp. <br> \( \sin 55 = \frac{h}{40} \Rightarrow h = 40 \sin 55 \approx 32.8 \text{ m} \).</div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q2. (Depression)</strong> From the top of a cliff 120m high, a boat is observed at an angle of depression of \( 18^\circ \). Calculate how far the boat is from the base of the cliff.</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h2')">Show Answer</button>
+        <div id="h2" class="answer-box">
+            Angle of elevation from boat = 18°. Opp = 120. Find Adj. <br>
+            \( \tan 18 = \frac{120}{x} \Rightarrow x = \frac{120}{\tan 18} \approx 369.3 \text{ m} \).
+        </div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q3. (Isosceles Triangle)</strong> An isosceles triangle has two sides of length 15 cm and a base of length 10 cm. Calculate the size of the base angles. <em>(Hint: Split it into two right-angled triangles).</em></div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h3')">Show Answer</button>
+        <div id="h3" class="answer-box">
+            Drop perpendicular. Adj = 5, Hyp = 15. <br>
+            \( \cos \theta = \frac{5}{15} \Rightarrow \theta = \cos^{-1}(0.333) \approx 70.5^\circ \).
+        </div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q4. (Multi-step)</strong> Two buildings are 20m apart. From the top of the shorter building (15m high), the angle of elevation to the top of the taller building is \( 25^\circ \). Calculate the height of the taller building.</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h4')">Show Answer</button>
+        <div id="h4" class="answer-box">
+            1. Form triangle at top. Adj = 20, Angle = 25. Find Opp \( x \). <br>
+            \( \tan 25 = \frac{x}{20} \Rightarrow x = 9.33 \text{ m} \). <br>
+            2. Total height = \( 15 + 9.33 = 24.33 \text{ m} \).
+        </div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q5. (Bearings & Distances)</strong> A ship sails 50 km on a bearing of \( 040^\circ \). It then sails due East for another 30 km. <br> (a) Calculate how far North the ship is from its starting point. <br> (b) Calculate the total straight-line distance from the start.</div>
+        <div class="working-space hw-space" style="height: 150px;"></div>
+        <button class="btn no-print" onclick="toggle('h5')">Show Answer</button>
+        <div id="h5" class="answer-box">
+            (a) North dist = \( 50 \cos 40 = 38.3 \text{ km} \). <br>
+            (b) East dist 1 = \( 50 \sin 40 = 32.14 \text{ km} \). Total East = \( 32.14 + 30 = 62.14 \). <br>
+            Distance \( = \sqrt{38.3^2 + 62.14^2} \approx 73.0 \text{ km} \).
+        </div>
+    </div>
+
+    <div class="footer">Page 2</div>
+
+    <script>
+        function toggle(id){var x=document.getElementById(id);x.style.display=x.style.display==='block'?'none':'block';}
+        function togglePrintAnswers(){document.body.classList.toggle('print-answers',document.getElementById('printAnswers').checked);}
+    </script>
+</body>
+</html>

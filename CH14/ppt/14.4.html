@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14.4 Completing the Square</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 40px; line-height: 1.5; color: #333; }
+        .page-header { text-align: center; font-size: 0.95em; color: #555; border-bottom: 1px solid #ddd; padding-bottom: 6px; margin-bottom: 12px; }
+        .page-footer { text-align: center; font-size: 0.95em; color: #555; border-top: 1px solid #ddd; padding-top: 6px; margin-top: 12px; }
+        .header-info { border-bottom: 2px solid #2c3e50; padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .student-field { border-bottom: 1px solid #999; width: 150px; display: inline-block; }
+        h1 { text-align: center; color: #2c3e50; font-size: 1.8em; margin: 10px 0; }
+        h2 { color: #2980b9; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 25px; font-size: 1.3em; }
+        .page-title { text-align: center; color: #2980b9; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 5px; font-size: 1.4em; }
+        .intro-box { background: #f8f9fa; border-left: 4px solid #2980b9; padding: 15px; font-size: 0.95em; }
+        .question-container { margin-bottom: 15px; break-inside: avoid; border: 1px solid #eee; padding: 10px; border-radius: 4px; }
+        .working-space { height: 80px; border: 1px dashed #ccc; background: #fffdfc; margin-top: 8px; }
+        .hw-space { height: 110px; }
+        .answer-box { background: #e8f5e9; padding: 8px; border-left: 4px solid #27ae60; display: none; margin-top: 8px; font-size: 0.9em; }
+        .btn { background: #3498db; color: white; border: none; padding: 4px 10px; cursor: pointer; border-radius: 3px; font-size: 0.8em; margin-top: 5px; }
+        .page-break { page-break-before: always; }
+        @media print { .no-print, .btn, .answer-box { display: none !important; } .working-space { border: 1px solid #eee; } body { padding: 0; } }
+    </style>
+</head>
+<body>
+
+    <h1>14.4 Completing the Square / 完全平方式</h1>
+
+    <!-- Section 1: Intro Problems -->
+    <div class="section">
+        <h2>1. Intro Problems (10 minutes) / 引入问题（10分钟）</h2>
+        
+        <p><strong>Objective / 目标:</strong> To help students understand the concept of completing the square, review quadratic equations, and introduce the need for solving them. / 帮助学生理解完全平方式的概念，复习二次方程，并引入求解的必要性。</p>
+        
+        <h3 class="section-title">Problem 1: Basic Review / 基本回顾</h3>
+        <p>Solve the quadratic equation / 解这个二次方程：</p>
+        <pre>x² + 6x + 5 = 0</pre>
+        <ul>
+            <li>What type of equation is this? / 这是什么类型的方程？</li>
+            <li>Can students identify it as a quadratic equation? / 学生能识别出它是二次方程吗？</li>
+            <li>Review the general form of a quadratic equation: <em>ax² + bx + c = 0</em> / 复习二次方程的一般形式：<em>ax² + bx + c = 0</em></li>
+        </ul>
+
+        <h3 class="section-title">Problem 2: Concept of Completing the Square / 完全平方式的概念</h3>
+        <p>Explain how to transform this equation into a perfect square. / 解释如何将这个方程转化为完全平方式。</p>
+        <pre>x² + 6x + 5 = 0</pre>
+        <ol>
+            <li>Take half of the coefficient of x (6), square it: <em>(6/2)² = 9</em>. / 取 x 的系数的一半（6），平方：<em>(6/2)² = 9</em>。</li>
+            <li>Add 9 to both sides: <em>x² + 6x + 9 = 9 - 5</em>. / 将 9 加到两边：<em>x² + 6x + 9 = 9 - 5</em>。</li>
+            <li>Result: <strong>(x + 3)² = 4</strong>. / 结果是：<strong>(x + 3)² = 4</strong>。</li>
+        </ol>
+
+        <p>Discussion / 讨论:</p>
+        <ul>
+            <li>Why do we add half of 6 squared to both sides? / 为什么将 6 的一半的平方加到两边？</li>
+            <li>What does the left side become? / 左边变成了什么？</li>
+            <li>How do we solve for x? / 如何求解 x？</li>
+        </ul>
+    </div>
+
+    <!-- Section 2: In-Class Practice -->
+    <div class="section">
+        <h2>2. In-Class Practice (20 minutes) / 课堂练习（20分钟）</h2>
+        
+        <p><strong>Objective / 目标:</strong> To deepen students' understanding by practicing completing the square on different quadratic equations. / 通过做不同的二次方程练习，加深学生对完全平方式的理解。</p>
+        
+        <h3 class="section-title">Practice 1: Standard Form Quadratic Equations / 标准形式的二次方程</h3>
+        <p>Solve the following equations by completing the square. / 通过完全平方式解以下方程：</p>
+        <ol>
+            <li>x² + 10x - 3 = 0</li>
+            <li>x² - 4x + 1 = 0</li>
+        </ol>
+
+        <h3 class="section-title">Practice 2: Quadratic Equations with No Constant Term / 不带常数项的二次方程</h3>
+        <p>Solve the following equation. / 解以下方程：</p>
+        <pre>x² + 8x = 0</pre>
+
+        <h3 class="section-title">Practice 3: Challenge Problem / 挑战题</h3>
+        <p>Solve the following equation. / 解以下方程：</p>
+        <pre>x² - 12x + 11 = 0</pre>
+
+        <p>Tips / 提示: If students struggle, remind them to focus on the coefficient of x and complete the square step by step. / 如果学生有困难，提醒他们注意 x 的系数，并一步一步进行完全平方式的转化。</p>
+    </div>
+
+    <!-- Section 3: After Class Homework -->
+    <div class="homework-section">
+        <h2>3. After Class Homework (10 minutes) / 课后作业（10分钟）</h2>
+        
+        <p><strong>Objective / 目标:</strong> To consolidate the concepts learned in class and provide independent practice for better fluency. / 巩固课堂上学到的概念，并提供独立练习，以提高流利度。</p>
+        
+        <h3 class="section-title">Homework 1: Completing the Square / 完全平方式</h3>
+        <p>Solve the following quadratic equations by completing the square. / 解以下二次方程：</p>
+        <ul>
+            <li>x² + 14x - 15 = 0</li>
+            <li>x² - 2x + 5 = 0</li>
+            <li>x² + 4x + 3 = 0</li>
+        </ul>
+
+        <div class="homework-answer">
+            <p>Answer space: / 作答区域：</p>
+            <div class="answer-placeholder"></div>
+        </div>
+
+        <h3 class="section-title">Homework 2: Application Problem / 应用问题</h3>
+        <p>A pond's depth can be represented by the equation: / 一个池塘的深度可以通过以下方程表示：</p>
+        <pre>h = 3x² + 12x - 2</pre>
+        <p>Where h is the depth, and x is the time (in hours). Find the depth of the pond at x = -2 hours. / 其中，h 是深度，x 是时间（小时）。求池塘在 x = -2 小时时的深度。</p>
+
+        <div class="homework-answer">
+            <p>Answer space: / 作答区域：</p>
+            <div class="answer-placeholder"></div>
+        </div>
+
+        <h3 class="section-title">Homework 3: Challenge Problem / 挑战题</h3>
+        <p>Solve the following equation. / 解以下方程：</p>
+        <pre>x² - 16x = 0</pre>
+        <p>In addition to completing the square, encourage students to think about the real-life significance of the solution. / 除了完全平方式，鼓励学生思考解的实际意义。</p>
+
+        <div class="homework-answer">
+            <p>Answer space: / 作答区域：</p>
+            <div class="answer-placeholder"></div>
+        </div>
+    </div>
+
+</body>
+</html>

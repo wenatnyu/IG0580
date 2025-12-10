@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IGCSE/Pro 科学计算器</title>
+    <style>
+        :root {
+            --bg-body: #121212;
+            --bg-calc: #1e1e1e;
+            --screen-bg: #9ea792;
+            --screen-text: #111;
+            --key-num: #3a3a3a;
+            --key-func: #252525;
+            --key-orange: #ff9f0a;
+            --shift-text: #d4a017; /* 黄色 Shift 文字 */
+            --alpha-text: #ff5e5e; /* 红色 Alpha 文字 */
+            --text-white: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+            user-select: none; /* 防止双击选中文本 */
+        }
+
+        .calculator {
+            width: 360px;
+            background-color: var(--bg-calc);
+            border-radius: 25px;
+            padding: 25px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 0 10px rgba(255,255,255,0.05);
+            border: 1px solid #333;
+            transition: width 0.3s ease;
+        }
+
+        /* 顶部开关栏 */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 0 5px;
+        }
+        
+        .brand {
+            color: #555;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .mode-toggle {
+            display: flex;
+            background: #000;
+            border-radius: 20px;
+            padding: 3px;
+            cursor: pointer;
+        }
+
+        .toggle-opt {
+            padding: 5px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            color: #666;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .toggle-opt.active {
+            background: #333;
+            color: var(--text-white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        /* 屏幕 */
+        .screen-container {
+            background-color: var(--screen-bg);
+            border-radius: 8px;
+            padding: 12px 18px;
+            margin-bottom: 25px;
+            box-shadow: inset 0 3px 8px rgba(0,0,0,0.3);
+            height: 90px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .status-bar {
+            display: flex;
+            gap: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            color: var(--screen-text);
+            opacity: 0.2;
+        }
+        
+        .status-bar span.on { opacity: 1; }
+
+        .expression {
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 15px;
+            color: var(--screen-text);
+            text-align: right;
+            min-height: 18px;
+            white-space: nowrap;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        .result {
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--screen-text);
+            text-align: right;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        /* 键盘区 */
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 默认IGCSE模式 4列 */
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        /* 按钮通用样式 */
+        button {
+            border: none;
+            outline: none;
+            height: 55px; /* 默认高度 */
+            border-radius: 12px;
+            font-size: 18px;
+            cursor: pointer;
+            color: var(--text-white);
+            font-weight: 500;
+            position: relative;
+            background: linear-gradient(145deg, #3f3f3f, #323232);
+            box-shadow: 4px 4px 8px #151515, -2px -2px 5px #444;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.05s, box-shadow 0.05s;
+        }
+
+        button:active {
+            box-shadow: inset 3px 3px 6px #151515, inset -2px -2px 5px #444;
+            transform: translateY(2px);
+        }
+
+        /* 按钮上的小字 (Shift 功能) */
+        .shift-label {
+            font-size: 9px;
+            color: var(--shift-text);
+            position: absolute;
+            top: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: bold;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+        
+        .main-label {
+            margin-top: 8px; /* 为上方小字腾出空间 */
+        }
+
+        /* 特殊按钮颜色 */
+        .btn-orange { background: linear-gradient(145deg, #ffaa33, #e6951b); color: #111; font-weight: bold; }
+        .btn-dark { background: linear-gradient(145deg, #2a2a2a, #202020); font-size: 16px; }
+        .btn-shift-key { color: var(--shift-text); font-weight: bold; }
+        .btn-alpha-key { color: var(--alpha-text); font-weight: bold; }
+        .btn-red { background: linear-gradient(145deg, #d64545, #b83333); }
+        .btn-blue { background: linear-gradient(145deg, #4562d6, #334db8); }
+
+        /* Shift 激活状态 */
+        .btn-shift-key.active { background: #5a4a1b; box-shadow: inset 2px 2px 5px #000; }
+
+        /* PRO 模式样式覆盖 */
+        .calculator.mode-pro {
+            width: 420px; /* 变宽 */
+        }
+
+        .calculator.mode-pro .keypad {
+            grid-template-columns: repeat(5, 1fr); /* 变5列 */
+            gap: 10px;
+        }
+
+        .calculator.mode-pro button {
+            height: 45px; /* 按钮变矮，更像科学计算器 */
+            font-size: 16px;
+            border-radius: 8px;
+        }
+
+        .calculator.mode-pro .main-label {
+            margin-top: 6px;
+        }
+
+        /* 仅在 PRO 模式显示的按钮 */
+        .pro-key {
+            display: none;
+        }
+
+        .calculator.mode-pro .pro-key {
+            display: flex;
+        }
+
+        /* 在 IGCSE 模式下隐藏的按钮 (当切换到 pro 时显示) */
+        /* 这里的逻辑是：HTML里写全所有的键，默认用CSS隐藏 PRO 键 */
+
+    </style>
+</head>
+<body>
+
+<div class="calculator" id="calc-body">
+    <div class="top-bar">
+        <div class="brand">FX-SIM 0580</div>
+        <div class="mode-toggle" onclick="toggleMode()">
+            <div class="toggle-opt active" id="mode-igcse">IGCSE</div>
+            <div class="toggle-opt" id="mode-pro">PRO</div>
+        </div>
+    </div>
+
+    <div class="screen-container">
+        <div class="status-bar">
+            <span id="st-shift">SHIFT</span>
+            <span id="st-deg" class="on">DEG</span>
+            <span id="st-rad">RAD</span>
+            <span id="st-m">M</span>
+        </div>
+        <div class="expression" id="expr"></div>
+        <div class="result" id="res">0</div>
+    </div>
+
+    <div class="keypad" id="keypad">
+        
+        <button class="btn-shift-key" onclick="handleShift()">SHIFT</button>
+        <button class="btn-alpha-key" onclick="toggleDegRad()">DRG</button>
+        <button class="pro-key btn-dark" onclick="inputKey('rec')"><span class="shift-label">Pol</span>Rec</button> <button class="pro-key btn-dark" onclick="inputKey('cube')"><span class="shift-label">³√</span>x³</button> <button class="btn-blue" onclick="handleDel()">DEL</button>
+        <button class="btn-red" onclick="handleAC()">AC</button>
+
+        <button class="pro-key btn-dark" onclick="inputKey('inv')"><span class="shift-label">x!</span>x⁻¹</button>
+        <button class="pro-key btn-dark" onclick="inputKey('log')"><span class="shift-label">10ⁿ</span>log</button>
+        <button class="pro-key btn-dark" onclick="inputKey('ln')"><span class="shift-label">eⁿ</span>ln</button>
+        <button class="pro-key btn-dark" onclick="inputKey('pow')"><span class="shift-label">ⁿ√</span>xⁿ</button>
+        
+        <button class="btn-dark" onclick="inputKey('sqrt')"><span class="shift-label">³√</span>√</button>
+        <button class="btn-dark" onclick="inputKey('sq')"><span class="shift-label">√</span>x²</button>
+        <button class="pro-key btn-dark" onclick="inputKey('hyp')">hyp</button>
+        <button class="btn-dark" onclick="inputKey('sin')"><span class="shift-label">sin⁻¹</span>sin</button>
+        <button class="btn-dark" onclick="inputKey('cos')"><span class="shift-label">cos⁻¹</span>cos</button>
+        
+        <button class="btn-dark" onclick="inputKey('tan')"><span class="shift-label">tan⁻¹</span>tan</button>
+        <button class="pro-key btn-dark" onclick="inputKey('sto')">STO</button>
+        <button class="btn-dark" onclick="inputKey('(')">(</button>
+        <button class="btn-dark" onclick="inputKey(')')">)</button>
+        <button class="pro-key btn-dark" onclick="inputKey('sd')">S⇔D</button>
+
+        <button onclick="inputKey('7')">7</button>
+        <button onclick="inputKey('8')">8</button>
+        <button onclick="inputKey('9')">9</button>
+        <button class="pro-key btn-dark" onclick="handleAC()">CLR</button> <button class="btn-dark" onclick="inputKey('/')"><span class="main-label">÷</span></button>
+
+        <button onclick="inputKey('4')">4</button>
+        <button onclick="inputKey('5')">5</button>
+        <button onclick="inputKey('6')">6</button>
+        <button class="pro-key btn-dark" onclick="inputKey('*')">×</button> <button class="btn-dark igcse-op" onclick="inputKey('*')"><span class="main-label">×</span></button> <button onclick="inputKey('1')">1</button>
+        <button onclick="inputKey('2')">2</button>
+        <button onclick="inputKey('3')">3</button>
+        <button class="pro-key btn-dark" onclick="inputKey('+')">+</button>
+        <button class="btn-dark igcse-op" onclick="inputKey('-')">-</button>
+
+        <button onclick="inputKey('0')">0</button>
+        <button onclick="inputKey('.')">.</button>
+        <button class="pro-key btn-dark" onclick="inputKey('pi')"><span class="shift-label">%</span>π</button>
+        <button class="pro-key btn-dark" onclick="inputKey('ans')">Ans</button>
+        <button class="btn-orange" onclick="calculate()">=</button>
+        <button class="btn-dark igcse-op" style="grid-column: 4; grid-row: 8; display:none;" onclick="inputKey('+')">+</button> </div>
+</div>
+
+<script>
+    // 状态变量
+    let currentExp = "";
+    let isShift = false;
+    let isDeg = true;
+    let isPro = false;
+    let ansValue = 0;
+
+    // DOM 元素
+    const exprEl = document.getElementById('expr');
+    const resEl = document.getElementById('res');
+    const shiftInd = document.getElementById('st-shift');
+    const degInd = document.getElementById('st-deg');
+    const radInd = document.getElementById('st-rad');
+    const calcBody = document.getElementById('calc-body');
+
+    // 音效系统 (Web Audio API)
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playBeep() {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(1200, audioCtx.currentTime); // 高频清脆声
+        oscillator.frequency.exponentialRampToValueAtTime(600, audioCtx.currentTime + 0.05);
+        
+        gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime); // 音量
+        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        
+        oscillator.start();
+        oscillator.stop(audioCtx.currentTime + 0.06);
+    }
+
+    // 模式切换
+    function toggleMode() {
+        playBeep();
+        isPro = !isPro;
+        if(isPro) {
+            calcBody.classList.add('mode-pro');
+            document.getElementById('mode-igcse').classList.remove('active');
+            document.getElementById('mode-pro').classList.add('active');
+            
+            // 调整布局逻辑：隐藏 IGCSE 特有的占位符，显示 PRO 键
+            document.querySelectorAll('.igcse-op').forEach(el => el.style.display = 'none');
+            // Pro keys automatically shown via CSS
+        } else {
+            calcBody.classList.remove('mode-pro');
+            document.getElementById('mode-igcse').classList.add('active');
+            document.getElementById('mode-pro').classList.remove('active');
+            
+            document.querySelectorAll('.igcse-op').forEach(el => el.style.display = 'flex');
+        }
+    }
+
+    // Shift 逻辑
+    function handleShift() {
+        playBeep();
+        isShift = !isShift;
+        shiftInd.classList.toggle('on', isShift);
+        document.querySelector('.btn-shift-key').classList.toggle('active', isShift);
+    }
+
+    function toggleDegRad() {
+        playBeep();
+        isDeg = !isDeg;
+        if(isDeg) {
+            degInd.classList.add('on');
+            radInd.classList.remove('on');
+        } else {
+            degInd.classList.remove('on');
+            radInd.classList.add('on');
+        }
+    }
+
+    // 输入处理
+    function inputKey(val) {
+        playBeep();
+        let addStr = "";
+
+        // 处理 Shift 组合键
+        if (isShift) {
+            switch(val) {
+                case 'sin': addStr = "asin("; break;
+                case 'cos': addStr = "acos("; break;
+                case 'tan': addStr = "atan("; break;
+                case 'log': addStr = "10^("; break;
+                case 'ln': addStr = "e^("; break;
+                case 'sq': addStr = "√("; break; // shift + square = root (common logic)
+                case 'sqrt': addStr = "cbrt("; break; // shift + root = cube root
+                case 'pow': addStr = "^(1/"; break; // root n
+                case 'pi': addStr = "%"; break;
+                default: addStr = val;
+            }
+            // 重置 Shift
+            handleShift(); 
+        } else {
+            // 普通按键
+            switch(val) {
+                case 'sin': case 'cos': case 'tan': case 'log': case 'ln':
+                    addStr = val + "("; break;
+                case 'sq': addStr = "^2"; break;
+                case 'sqrt': addStr = "√("; break;
+                case 'cube': addStr = "^3"; break;
+                case 'inv': addStr = "^-1"; break;
+                case 'pow': addStr = "^"; break;
+                case 'pi': addStr = "π"; break;
+                case 'ans': addStr = "Ans"; break;
+                default: addStr = val;
+            }
+        }
+
+        currentExp += addStr;
+        updateDisplay();
+    }
+
+    function handleDel() {
+        playBeep();
+        currentExp = currentExp.slice(0, -1);
+        updateDisplay();
+    }
+
+    function handleAC() {
+        playBeep();
+        currentExp = "";
+        resEl.innerText = "0";
+        updateDisplay();
+    }
+
+    function updateDisplay() {
+        let displayHtml = currentExp
+            .replace(/\*/g, '<span style="color:#ff9f0a">×</span>')
+            .replace(/\//g, '<span style="color:#ff9f0a">÷</span>')
+            .replace(/\^/g, '<sup style="font-size:0.8em">^</sup>')
+            .replace(/asin/g, 'sin⁻¹')
+            .replace(/acos/g, 'cos⁻¹')
+            .replace(/atan/g, 'tan⁻¹')
+            .replace(/sqrt/g, '√')
+            .replace(/cbrt/g, '³√')
+            .replace(/pi/g, 'π');
+        
+        exprEl.innerHTML = displayHtml;
+    }
+
+    // 核心计算引擎
+    function calculate() {
+        playBeep();
+        if(!currentExp) return;
+
+        let raw = currentExp;
+
+        // 1. 预处理常数
+        raw = raw.replace(/π/g, Math.PI);
+        raw = raw.replace(/e\^/g, "Math.exp"); // handle e^ function
+        raw = raw.replace(/Ans/g, ansValue);
+
+        // 2. 预处理函数 (将文本转为 Math 对象方法)
+        // 关键：JS Math.log 是 ln (底数e)，Math.log10 是 log (底数10)
+        raw = raw.replace(/ln\(/g, 'Math.log('); 
+        raw = raw.replace(/log\(/g, 'Math.log10('); 
+        
+        // 三角函数处理 (角度/弧度)
+        const toRad = isDeg ? `*(${Math.PI}/180)` : "";
+        const toDeg = isDeg ? `*(180/${Math.PI})` : "";
+
+        // 正向三角 sin(30) -> Math.sin(30 * PI/180)
+        raw = raw.replace(/sin\(([^)]+)\)/g, (match, p1) => `Math.sin(${p1}${toRad})`);
+        raw = raw.replace(/cos\(([^)]+)\)/g, (match, p1) => `Math.cos(${p1}${toRad})`);
+        raw = raw.replace(/tan\(([^)]+)\)/g, (match, p1) => `Math.tan(${p1}${toRad})`);
+
+        // 反向三角 asin(0.5) -> Math.asin(0.5) * 180/PI
+        raw = raw.replace(/asin\(([^)]+)\)/g, (match, p1) => `(Math.asin(${p1})${toDeg})`);
+        raw = raw.replace(/acos\(([^)]+)\)/g, (match, p1) => `(Math.acos(${p1})${toDeg})`);
+        raw = raw.replace(/atan\(([^)]+)\)/g, (match, p1) => `(Math.atan(${p1})${toDeg})`);
+
+        // 幂运算 x^y -> x**y
+        // 注意：简单的 replace ^ 为 ** 可能有优先级问题，但在简单模拟器中通常够用
+        raw = raw.replace(/\^/g, '**'); 
+        
+        // 根号
+        raw = raw.replace(/√\(/g, 'Math.sqrt(');
+        raw = raw.replace(/cbrt\(/g, 'Math.cbrt(');
+
+        try {
+            let result = eval(raw);
+            
+            // 处理精度问题 (0.1+0.2)
+            if (!Number.isInteger(result)) {
+                result = parseFloat(result.toFixed(9)); // 9位小数
+            }
+            
+            ansValue = result; // 存储 Ans
+            resEl.innerText = result;
+            
+            // 计算完后，不自动清空表达式，方便用户修改
+        } catch (e) {
+            resEl.innerText = "Syntax Error";
+            console.error(e);
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14.6 Factorising Quadratics (a ≠ 1)</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2C3E50;
+            text-align: center;
+        }
+        h1 {
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        h3 {
+            font-size: 18px;
+            margin-top: 15px;
+        }
+        .section {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .section p, .section ul, .section ol {
+            margin-bottom: 10px;
+        }
+        .problem, .homework {
+            margin-bottom: 15px;
+        }
+        .problem pre, .homework pre {
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+        }
+        .homework-section {
+            page-break-before: always;
+            margin-top: 30px;
+        }
+        .answer-placeholder {
+            border: 1px dashed #BDC3C7;
+            height: 80px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .answer-label {
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: 4px;
+            margin-bottom: 2px;
+        }
+        .section-title {
+            color: #2980B9;
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        ul.question-list, ol.question-list {
+            margin-left: 20px;
+        }
+        ul.question-list li, ol.question-list li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>14.6 Factorising Quadratics (a ≠ 1) / 系数不为 1 的二次式因式分解</h1>
+
+    <!-- Section 1: Intro Problems -->
+    <div class="section">
+        <h2>1. Intro Problems (10 minutes) / 引入问题（10 分钟）</h2>
+        
+        <p><strong>Objective / 目标：</strong> 
+            To recall factorising when \(a = 1\) and introduce methods for factorising quadratics where \(a \neq 1\). 
+            / 复习系数 \(a = 1\) 时的因式分解，并引入系数 \(a \neq 1\) 时的因式分解方法。
+        </p>
+
+        <h3 class="section-title">Problem 1: Warm-up (a = 1) / 热身：系数为 1</h3>
+        <p>Factorise the quadratic expressions. / 因式分解下列二次式：</p>
+        <ol class="question-list">
+            <li>\(x^{2} + 7x + 10\)</li>
+            <li>\(x^{2} - 5x + 6\)</li>
+        </ol>
+        <p>
+            Remind students: “Find two numbers that add to \(b\) and multiply to \(c\).”<br>
+            提醒学生：寻找“两数相加等于 \(b\)，相乘等于 \(c\)”。
+        </p>
+
+        <h3 class="section-title">Problem 2: Now a ≠ 1 / 现在 \(a \neq 1\)</h3>
+        <p>Consider the quadratic: / 思考下面的二次式：</p>
+        <pre>2x² + 7x + 3</pre>
+        <p>Guide them through the “AC method” (or “splitting the middle term”). / 通过“AC 法”（拆中项）进行引导。</p>
+        <ol class="question-list">
+            <li>Write it as \(ax^{2} + bx + c\). Here \(a = 2\), \(b = 7\), \(c = 3\).<br>
+                写成 \(ax^{2} + bx + c\) 形式，此处 \(a = 2\), \(b = 7\), \(c = 3\)。
+            </li>
+            <li>Multiply \(a \times c\): \(2 \times 3 = 6\).<br>
+                计算 \(a \times c\)：\(2 \times 3 = 6\)。
+            </li>
+            <li>Find two integers \(m, n\) such that \(m + n = b\), \(mn = ac\). 
+                Here \(m = 6\), \(n = 1\).<br>
+                找整数 \(m, n\)，使 \(m + n = b\)，\(mn = ac\)。此处 \(m = 6\), \(n = 1\)。
+            </li>
+            <li>Rewrite the middle term: 
+                \(2x^{2} + 7x + 3 = 2x^{2} + 6x + x + 3\).<br>
+                拆中项：\(2x^{2} + 7x + 3 = 2x^{2} + 6x + x + 3\)。
+            </li>
+            <li>Factor by grouping:<br>
+                \(2x^{2} + 6x + x + 3 = 2x(x + 3) + 1(x + 3) = (2x + 1)(x + 3)\).<br>
+                分组提取公因式：\(2x^{2} + 6x + x + 3 = 2x(x + 3) + 1(x + 3) = (2x + 1)(x + 3)\)。
+            </li>
+        </ol>
+        <p><strong>Key idea / 关键思想：</strong> 
+            For \(ax^{2} + bx + c\) with \(a \neq 1\), we can use AC method: multiply \(a \cdot c\), split \(b\) into two numbers, then factor by grouping. 
+            / 对于 \(a \neq 1\) 的 \(ax^{2} + bx + c\)，可以用 AC 法：乘 \(a \cdot c\)，拆分 \(b\)，再分组因式分解。
+        </p>
+    </div>
+
+    <!-- Section 2: In-Class Practice -->
+    <div class="section">
+        <h2>2. In-Class Practice (20 minutes) / 课堂练习（20 分钟）</h2>
+        
+        <p><strong>Objective / 目标：</strong> 
+            To practise factorising quadratics with \(a \neq 1\), step by step. 
+            / 通过循序渐进的练习，掌握 \(a \neq 1\) 时的二次式因式分解。
+        </p>
+
+        <h3 class="section-title">Practice 1: Positive a and c / \(a, c > 0\)</h3>
+        <p>Factorise the following expressions. / 因式分解下列二次式：</p>
+        <ol class="question-list">
+            <li>\(2x^{2} + 9x + 7\)</li>
+            <li>\(3x^{2} + 11x + 6\)</li>
+            <li>\(4x^{2} + 13x + 3\)</li>
+        </ol>
+
+        <h3 class="section-title">Practice 2: c is negative / 常数项为负</h3>
+        <p>Factorise the following expressions. / 因式分解下列二次式：</p>
+        <ol class="question-list">
+            <li>\(3x^{2} - 2x - 8\)</li>
+            <li>\(2x^{2} + x - 6\)</li>
+            <li>\(5x^{2} - 7x - 6\)</li>
+        </ol>
+
+        <h3 class="section-title">Practice 3: From factorising to solving / 从因式分解到解方程</h3>
+        <p>Solve the following equations by factorising. / 通过因式分解解下列方程：</p>
+        <ol class="question-list">
+            <li>\(2x^{2} + 5x - 3 = 0\)</li>
+            <li>\(3x^{2} - 10x + 3 = 0\)</li>
+        </ol>
+
+        <p><strong>Tips / 提示：</strong> 
+            Always check by expanding your factors. / 每次因式分解后，用展开检查是否正确。
+        </p>
+    </div>
+
+    <!-- Section 3: After Class Homework (more questions) -->
+    <div class="homework-section">
+        <h2>3. After Class Homework (about 20 minutes) / 课后作业（约 20 分钟）</h2>
+        
+        <p><strong>Objective / 目标：</strong> 
+            To consolidate skills in factorising quadratics with \(a \neq 1\), and to connect factorising with solving equations and simple applications. 
+            / 巩固 \(a \neq 1\) 的因式分解技能，并将因式分解与解方程及简单应用题联系起来。
+        </p>
+
+        <!-- Homework 1 -->
+        <h3 class="section-title">Homework 1: Factorise the expressions / 作业 1：因式分解</h3>
+        <p>Factorise each of the following. / 因式分解下列各式：</p>
+        <ul class="question-list">
+            <li>
+                \(2x^{2} + 11x + 12\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+            <li>
+                \(3x^{2} + 7x + 2\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+            <li>
+                \(5x^{2} + 13x + 6\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+            <li>
+                \(4x^{2} - x - 3\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+            <li>
+                \(6x^{2} - 5x - 4\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+            <li>
+                \(3x^{2} - 14x - 5\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+        </ul>
+
+        <!-- Homework 2 -->
+        <h3 class="section-title">Homework 2: Solve by factorising / 作业 2：因式分解解方程</h3>
+        <p>Solve the following equations by factorising. / 通过因式分解解下列方程：</p>
+        <ul class="question-list">
+            <li>
+                \(2x^{2} + 3x - 5 = 0\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+            <li>
+                \(5x^{2} - 6x - 1 = 0\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+            <li>
+                \(3x^{2} + 8x + 4 = 0\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+            <li>
+                \(4x^{2} - 11x + 6 = 0\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+        </ul>
+
+        <!-- Homework 3 -->
+        <h3 class="section-title">Homework 3: Word problems with factorising / 作业 3：应用题</h3>
+        <p><strong>(a)</strong> The product of two consecutive positive integers is 72. Let the smaller integer be \(n\).<br>
+           相邻两个正整数的乘积是 72，设较小的整数为 \(n\)。</p>
+        <ul class="question-list">
+            <li>
+                Write an equation in terms of \(n\). / 用 \(n\) 表示并写出方程。
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+            <li>
+                Solve the equation by factorising. / 通过因式分解解出 \(n\)。
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+        </ul>
+
+        <p><strong>(b)</strong> The area of a rectangle is given by \(A = 3x^{2} + 8x\). The width is \(x\).<br>
+           一个矩形面积为 \(A = 3x^{2} + 8x\)，宽为 \(x\)。</p>
+        <ul class="question-list">
+            <li>
+                Factorise the expression for \(A\). / 因式分解面积表达式 \(A\)。
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+            <li>
+                Hence express the length in terms of \(x\). / 从而用 \(x\) 表示矩形的长。
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+        </ul>
+
+        <!-- Homework 4 (Challenge) -->
+        <h3 class="section-title">Homework 4: Challenge / 作业 4：挑战题</h3>
+        <p>Factorise and then solve the equations. / 先因式分解，再解方程：</p>
+        <ul class="question-list">
+            <li>
+                \(6x^{2} + 7x - 3 = 0\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+            <li>
+                \(4x^{2} - 4x - 3 = 0\)
+                <p class="answer-label">Answer space / 作答区域：</p>
+                <div class="answer-placeholder"></div>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IGCSE Mathematics 0580 - Course Materials</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.95) 0%, rgba(52, 73, 94, 0.95) 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .header-image {
+            width: 450px;
+            height: auto;
+            max-width: 100%;
+            border-radius: 15px;
+            object-fit: contain;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease;
+            background: white;
+        }
+        
+        .header-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .header-text {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: url('students_introduction.png') no-repeat center;
+            background-size: contain;
+            opacity: 0.15;
+            transform: rotate(-15deg);
+        }
+        
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+        
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        .content {
+            padding: 50px 40px;
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 30px;
+            background-image: url('students_introduction.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #2c5f4a;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            z-index: 0;
+        }
+        
+        .intro > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .intro h2 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-size: 2em;
+            font-weight: 700;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
+            background: rgba(44, 62, 80, 0.85);
+            padding: 20px 40px;
+            border-radius: 12px;
+            display: inline-block;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .intro p {
+            color: #ffffff;
+            font-size: 1.2em;
+            line-height: 1.9;
+            max-width: 850px;
+            margin: 0 auto;
+            background: rgba(44, 62, 80, 0.85);
+            padding: 20px 35px;
+            border-radius: 12px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .chapters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .chapter-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .chapter-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .chapter-card:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .chapter-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+        
+        .chapter-card h3 {
+            color: #2c3e50;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #667eea;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .chapter-card h3::before {
+            content: '📖';
+            font-size: 1.2em;
+        }
+        
+        .chapter-card p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+        
+        .links-section {
+            margin-top: 15px;
+        }
+        
+        .links-section h4 {
+            color: #2980b9;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .link-list {
+            list-style: none;
+        }
+        
+        .link-list li {
+            margin-bottom: 8px;
+        }
+        
+        .link-list a {
+            color: #667eea;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 3px solid transparent;
+        }
+        
+        .link-list a:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding-left: 25px;
+            border-left-color: #ffd700;
+            transform: translateX(5px);
+        }
+        
+        .link-list a::before {
+            content: "📄 ";
+            margin-right: 5px;
+        }
+        
+        .quiz-link {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%) !important;
+            border-left: 3px solid #27ae60 !important;
+        }
+        
+        .quiz-link::before {
+            content: "📝 ";
+        }
+        
+        .quiz-link:hover {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%) !important;
+            color: white !important;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .chapter-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .chapter-card:nth-child(1) { animation-delay: 0.1s; }
+        .chapter-card:nth-child(2) { animation-delay: 0.2s; }
+        
+        .footer p {
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 30px 20px;
+            }
+            
+            .header-image {
+                width: 100%;
+                max-width: 400px;
+                height: auto;
+            }
+            
+            .header-text {
+                text-align: center;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .header p {
+                font-size: 1.1em;
+            }
+            
+            .intro {
+                min-height: 450px;
+                padding: 30px 20px;
+            }
+            
+            .intro h2 {
+                font-size: 1.6em;
+                padding: 15px 25px;
+            }
+            
+            .intro p {
+                font-size: 1.05em;
+                padding: 15px 22px;
+            }
+            
+            .chapters {
+                grid-template-columns: 1fr;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .chapter-card {
+                padding: 20px;
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="students.jpg" alt="Students Learning" class="header-image">
+            <div class="header-text">
+                <h1>IGCSE Mathematics (0580)</h1>
+                <p>Comprehensive Course Materials & Practice Resources</p>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="intro">
+                <h2>🎓 Welcome to IGCSE Mathematics 0580</h2>
+                <p>Explore comprehensive learning materials organized by chapters. Each chapter includes lecture notes, practice exercises, and quizzes to help you master the concepts.</p>
+            </div>
+            
+            <div class="chapters">
+                <!-- Chapter 14 -->
+                <div class="chapter-card">
+                    <h3>Chapter 14: Algebra</h3>
+                    <p>Advanced algebra topics including quadratic equations, factorization, and algebraic fractions.</p>
+                    
+                    <div class="links-section">
+                        <h4>📚 Lessons</h4>
+                        <ul class="link-list">
+                            <li><a href="CH14/ppt/14.4.html">14.4 Completing the Square (Lesson Notes)</a></li>
+                            <li><a href="CH14/ppt/14.4_exercise.html">14.4 Practice Exercises</a></li>
+                            <li><a href="CH14/ppt/14.5.html">14.5 Quadratic Formula</a></li>
+                            <li><a href="CH14/ppt/14.6.html">14.6 Factorising Quadratics (a ≠ 1)</a></li>
+                            <li><a href="CH14/ppt/14.7.html">14.7 Algebraic Fractions</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="links-section">
+                        <h4>📄 Exercise PDFs</h4>
+                        <ul class="link-list">
+                            <li><a href="CH14/exercise/Systems of Equations Elimination.pdf" class="quiz-link">Systems of Equations - Elimination Method</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="links-section">
+                        <h4>📝 Quizzes & Practice</h4>
+                        <ul class="link-list">
+                            <li><a href="CH14/quiz/0580_Algebra_Quiz.html" class="quiz-link">Algebra Quiz</a></li>
+                            <li><a href="CH14/quiz/0580_Algebra_Quiz.html - answer.html" class="quiz-link">Algebra Quiz (Answers)</a></li>
+                            <li><a href="CH14/quiz/0580_U04_CH14_Quiz.html" class="quiz-link">Chapter 14 Quiz</a></li>
+                            <li><a href="CH14/quiz/0580_hw01.html" class="quiz-link">Homework 01</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Chapter 15 -->
+                <div class="chapter-card">
+                    <h3>Chapter 15: Trigonometry</h3>
+                    <p>Comprehensive trigonometry covering scale drawings, bearings, ratios, and practical applications.</p>
+                    
+                    <div class="links-section">
+                        <h4>📚 Lessons</h4>
+                        <ul class="link-list">
+                            <li><a href="CH15/ppt/15.1.html">15.1 Scale Drawings</a></li>
+                            <li><a href="CH15/ppt/15.2.html">15.2 Bearings</a></li>
+                            <li><a href="CH15/ppt/15.3.html">15.3 Trigonometric Ratios (Introduction)</a></li>
+                            <li><a href="CH15/ppt/15.3a.html">15.3a Trigonometric Ratios (Extended)</a></li>
+                            <li><a href="CH15/ppt/15.3b-calculator.html">15.3b Calculator Practice</a></li>
+                            <li><a href="CH15/ppt/15.4.html">15.4 Exact Trig Ratios</a></li>
+                            <li><a href="CH15/ppt/15.5.html">15.5 Problem Solving with Trig</a></li>
+                            <li><a href="CH15/ppt/15.6.html">15.6 Trigonometric Graphs</a></li>
+                            <li><a href="CH15/ppt/keywords.html">Keywords & Terminology</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="links-section">
+                        <h4>📄 Exercise PDFs</h4>
+                        <ul class="link-list">
+                            <li><a href="CH15/exercise/9-Trigonometric Ratios.pdf" class="quiz-link">Trigonometric Ratios Practice</a></li>
+                            <li><a href="CH15/exercise/EX01-Finding Trigonometric Ratios.pdf" class="quiz-link">Finding Trigonometric Ratios</a></li>
+                            <li><a href="CH15/exercise/EX02-Trigonometry To Find Lengths.pdf" class="quiz-link">Trigonometry - Find Lengths</a></li>
+                            <li><a href="CH15/exercise/EX002-Trigonometry to Find Angle Measures.pdf" class="quiz-link">Trigonometry - Find Angles</a></li>
+                            <li><a href="CH15/exercise/9-Solving Right Triangles.pdf" class="quiz-link">Solving Right Triangles</a></li>
+                            <li><a href="CH15/exercise/9-Inverse Trigonometric Ratios.pdf" class="quiz-link">Inverse Trigonometric Ratios</a></li>
+                            <li><a href="CH15/exercise/9-Multi-Step Trig Problems.pdf" class="quiz-link">Multi-Step Trig Problems</a></li>
+                            <li><a href="CH15/exercise/Trigonometry to Find Angle Measures.pdf" class="quiz-link">Trig - Angle Measures (Alt)</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="links-section">
+                        <h4>📝 Quizzes & Practice</h4>
+                        <ul class="link-list">
+                            <li><a href="CH15/quiz/0580_Algebra_Quiz.html" class="quiz-link">Algebra Quiz</a></li>
+                            <li><a href="CH15/quiz/0580_Algebra_Quiz.html - answer.html" class="quiz-link">Algebra Quiz (Answers)</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p style="font-size: 1.1em; margin-bottom: 10px;">© 2024 IGCSE Mathematics 0580 • All materials for educational purposes</p>
+            <p style="opacity: 0.9;">Updated: December 2024 | 🌐 Powered by Knowledge & Innovation</p>
+            <p style="margin-top: 15px; opacity: 0.8; font-size: 0.9em;">💡 Keep learning, keep growing!</p>
+        </div>
+    </div>
+</body>
+</html>

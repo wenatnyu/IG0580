@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ch14 & 15 Vocab Quiz (Shuffle & Print)</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 850px; margin: 0 auto; padding: 40px; color: #333; counter-reset: q-counter; }
+        .header-info { border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .student-field { border-bottom: 1px solid #333; width: 150px; display: inline-block; }
+        h1 { text-align: center; margin: 10px 0; font-size: 1.8em; }
+        h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 30px; color: #2c3e50; }
+        
+        /* Controls Area (Hidden on Print) */
+        .controls { 
+            background: #f0f0f0; padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 30px; border: 1px solid #ddd;
+            display: flex; justify-content: center; gap: 20px; align-items: center;
+        }
+        .btn { background: #2c3e50; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; font-size: 0.9em; font-weight: bold; }
+        .btn:hover { background: #34495e; }
+        .btn-shuffle { background: #e67e22; }
+        .btn-shuffle:hover { background: #d35400; }
+        .toggle-label { font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+
+        /* Question Styles with Auto-Numbering */
+        .question-row { margin-bottom: 15px; display: flex; align-items: baseline; font-size: 1.05em; line-height: 1.8; }
+        .question-row::before {
+            counter-increment: q-counter;
+            content: counter(q-counter) ". ";
+            font-weight: bold;
+            min-width: 25px;
+        }
+
+        .blank-line {
+            display: inline-block;
+            border-bottom: 1px solid #000;
+            width: 200px;
+            margin: 0 10px;
+            text-align: center;
+            color: #c0392b;
+            font-weight: bold;
+            min-height: 24px;
+        }
+        
+        /* Table Styles */
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        tr.q-row { counter-increment: q-counter; }
+        td { padding: 10px; border-bottom: 1px dashed #ccc; vertical-align: bottom; }
+        
+        .cn-term::before {
+            content: counter(q-counter) ". ";
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        .cn-term { width: 35%; font-weight: bold; color: #555; }
+        .en-blank { width: 65%; border-bottom: 1px solid #000; height: 30px; color: #c0392b; font-weight: bold; padding-left: 10px; position: relative; }
+        
+        /* Answer Visibility Logic */
+        .answer { visibility: hidden; } /* Default hidden */
+        body.show-screen-answers .answer { visibility: visible; } /* Screen toggle */
+
+        @media print {
+            .no-print { display: none !important; }
+            body { padding: 0; }
+            /* Print Logic */
+            body .answer { visibility: hidden; } /* Default print hidden */
+            body.print-with-answers .answer { visibility: visible !important; } /* Print visible if checked */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls no-print">
+        <button class="btn btn-shuffle" onclick="shuffleAll()">🔀 Shuffle Questions</button>
+        <button class="btn" onclick="document.body.classList.toggle('show-screen-answers')">👁️ Show/Hide Answers (Screen)</button>
+        <label class="toggle-label">
+            <input type="checkbox" id="printCheck" onchange="togglePrintMode()"> 
+            🖨️ Print WITH Answers
+        </label>
+    </div>
+
+    <div class="header-info">
+        <div><strong>Vocabulary Quiz: Chapters 14 & 15</strong><br>IGCSE Mathematics (0580)</div>
+        <div style="text-align: right;">
+            Name: <span class="student-field"></span><br>
+            Date: <span class="student-field"></span><br>
+            Score: <span class="student-field"></span> / 18
+        </div>
+    </div>
+
+    <h1>Mathematical Vocabulary Dictation</h1>
+
+    <h2>Part 1: Concept Completion</h2>
+    <p style="font-style: italic; color: #666; margin-bottom: 20px;">Read the definition and write the English term.</p>
+
+    <div id="part1-container">
+        <div class="question-row">Two or more linear equations that are solved at the same time are called <span class="blank-line"><span class="answer">Simultaneous</span></span> equations.</div>
+        <div class="question-row">In the algebraic fraction \( \frac{a}{b} \), the top part \( a \) is the numerator, and the bottom part \( b \) is the <span class="blank-line"><span class="answer">Denominator</span></span>.</div>
+        <div class="question-row">The formula \( x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \) is known as the <span class="blank-line"><span class="answer">Quadratic</span></span> formula.</div>
+        <div class="question-row">The longest side of a right-angled triangle, opposite the right angle, is called the <span class="blank-line"><span class="answer">Hypotenuse</span></span>.</div>
+        <div class="question-row">Bearings are always measured in a <span class="blank-line"><span class="answer">Clockwise</span></span> direction from the North line.</div>
+        <div class="question-row">The method of changing \( x^2 + 6x \) into the form \( (x+3)^2 - 9 \) is called <span class="blank-line"><span class="answer">Completing</span></span> the square.</div>
+        <div class="question-row">A drawing where 1 cm represents 1 km in real life is called a <span class="blank-line"><span class="answer">Scale</span></span> drawing.</div>
+    </div>
+
+    <h2>Part 2: Terminology Check</h2>
+    <p style="font-style: italic; color: #666;">Translate the following Chinese terms into English.</p>
+
+    <table>
+        <tbody id="part2-container">
+            <tr class="q-row"><td class="cn-term">线性不等式</td><td class="en-blank"><span class="answer">Linear inequality</span></td></tr>
+            <tr class="q-row"><td class="cn-term">区域 (如阴影部分)</td><td class="en-blank"><span class="answer">Region</span></td></tr>
+            <tr class="q-row"><td class="cn-term">系数 (如 3x 中的 3)</td><td class="en-blank"><span class="answer">Coefficient</span></td></tr>
+            <tr class="q-row"><td class="cn-term">消元法 (解方程)</td><td class="en-blank"><span class="answer">Eliminate / Elimination</span></td></tr>
+            <tr class="q-row"><td class="cn-term">邻边 (三角学)</td><td class="en-blank"><span class="answer">Adjacent</span></td></tr>
+            <tr class="q-row"><td class="cn-term">对边 (三角学)</td><td class="en-blank"><span class="answer">Opposite</span></td></tr>
+            <tr class="q-row"><td class="cn-term">余弦 (cos)</td><td class="en-blank"><span class="answer">Cosine</span></td></tr>
+            <tr class="q-row"><td class="cn-term">正切 (tan)</td><td class="en-blank"><span class="answer">Tangent</span></td></tr>
+            <tr class="q-row"><td class="cn-term">钝角 (>90度)</td><td class="en-blank"><span class="answer">Obtuse angle</span></td></tr>
+            <tr class="q-row"><td class="cn-term">边界 (不等式的线)</td><td class="en-blank"><span class="answer">Boundary</span></td></tr>
+            <tr class="q-row"><td class="cn-term">因式分解</td><td class="en-blank"><span class="answer">Factorise</span></td></tr>
+        </tbody>
+    </table>
+
+    <div style="text-align: center; margin-top: 40px; font-size: 0.8em; color: #888;">
+        IGCSE Math Vocabulary Check | Chapters 14-15
+    </div>
+
+    <script>
+        // Shuffle Logic
+        function shuffleAll() {
+            shuffleContainer('part1-container');
+            shuffleContainer('part2-container');
+        }
+
+        function shuffleContainer(id) {
+            const container = document.getElementById(id);
+            const elements = Array.from(container.children);
+            
+            // Fisher-Yates Shuffle Algorithm
+            for (let i = elements.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [elements[i], elements[j]] = [elements[j], elements[i]];
+            }
+
+            // Re-append elements (CSS counters will handle re-numbering automatically)
+            elements.forEach(el => container.appendChild(el));
+        }
+
+        // Print Mode Logic
+        function togglePrintMode() {
+            const checkBox = document.getElementById('printCheck');
+            if (checkBox.checked) {
+                document.body.classList.add('print-with-answers');
+            } else {
+                document.body.classList.remove('print-with-answers');
+            }
+        }
+    </script>
+</body>
+</html>

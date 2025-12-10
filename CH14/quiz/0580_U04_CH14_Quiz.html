@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 14 Test: Further Solving of Equations and Inequalities</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .header-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+        }
+        .question-container {
+            margin-bottom: 20px;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 20px;
+            break-inside: avoid; /* 防止打印时题目被切断 */
+        }
+        .question-text {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .working-space {
+            height: 150px; /* 留给学生的作答空间 */
+            width: 100%;
+            border: 1px solid #f0f0f0; /* 屏幕上显示淡淡的框，方便看区域 */
+            background-color: #fafafa;
+        }
+        .answer-section {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            display: none; /* 默认隐藏 */
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .btn-toggle-all {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #28a745;
+        }
+        
+        /* 打印样式控制 */
+        @media print {
+            .no-print, .btn, .btn-toggle-all {
+                display: none !important;
+            }
+            .answer-section {
+                display: none !important; /* 打印时强制隐藏答案 */
+            }
+            .working-space {
+                border: none; /* 打印时去除边框，或者保留看您喜好 */
+                background-color: white;
+            }
+            body {
+                padding: 0;
+                font-size: 12pt;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-info">
+        <div><strong>Subject:</strong> Mathematics (0580)</div>
+        <div><strong>Chapter:</strong> 14. Further solving of equations and inequalities</div>
+        <div><strong>Time:</strong> 90 Minutes</div>
+    </div>
+
+    <h1>Chapter 14 Unit Test</h1>
+    <p class="no-print" style="text-align: center; color: #666;">
+        (Web View Mode: Click "Show Answer" to reveal solutions. <br> Print Mode: Answers will be automatically hidden.)
+    </p>
+
+    <button class="btn btn-toggle-all no-print" onclick="toggleAllAnswers()">Toggle All Answers</button>
+
+    <div class="question-container">
+        <div class="question-text">1. Solve the simultaneous equations. (Topic 14.1)</div>
+        <div>
+            $$ \begin{align*} 2x + 3y &= 16 \\ 5x - 2y &= 21 \end{align*} $$
+        </div>
+        <button class="btn no-print" onclick="toggleAnswer('a1')">Show Answer</button>
+        <div id="a1" class="answer-section">
+            <strong>Answer:</strong> \( x = 5, y = 2 \) <br>
+            <em>Method: Multiply top by 2, bottom by 3 to eliminate y, or use substitution.</em>
+        </div>
+        <div class="working-space"></div>
+    </div>
+
+    <div class="question-container">
+        <div class="question-text">2. Two sandwiches and three soft drinks cost $18. Five sandwiches and two soft drinks cost $28.50. Calculate the cost of one sandwich and one soft drink. (Topic 14.1)</div>
+        <button class="btn no-print" onclick="toggleAnswer('a2')">Show Answer</button>
+        <div id="a2" class="answer-section">
+            <strong>Answer:</strong> Sandwich = $4.50, Drink = $3.00 <br>
+            <em>Let x be sandwich, y be drink. Solve \(2x+3y=18\) and \(5x+2y=28.5\).</em>
+        </div>
+        <div class="working-space"></div>
+    </div>
+
+    <div class="question-container">
+        <div class="question-text">3. Solve the inequality. (Topic 14.2)</div>
+        <div>$$ 3(x - 2) < 5x + 4 $$</div>
+        <button class="btn no-print" onclick="toggleAnswer('a3')">Show Answer</button>
+        <div id="a3" class="answer-section">
+            <strong>Answer:</strong> \( x > -5 \) <br>
+            <em>Steps: \(3x - 6 < 5x + 4 \Rightarrow -10 < 2x \Rightarrow -5 < x\)</em>
+        </div>
+        <div class="working-space"></div>
+    </div>
+
+    <div class="question-container">
+        <div class="question-text">4. Find the integer values of \( n \) that satisfy the inequality. (Topic 14.2)</div>
+        <div>$$ -7 \le 2n - 3 < 5 $$</div>
+        <button class="btn no-print" onclick="toggleAnswer('a4')">Show Answer</button>
+        <div id="a4" class="answer-section">
+            <strong>Answer:</strong> \( n = -2, -1, 0, 1, 2, 3 \) <br>
+            <em>Steps: Add 3 to all parts: \(-4 \le 2n < 8\). Divide by 2: \(-2 \le n < 4\).</em>
+        </div>
+        <div class="working-space"></div>
+    </div>
+
+    <div class="question-container">
+        <div class="question-text">5. Solve the inequality and represent the solution on a number line (sketch the line below). (Topic 14.2)</div>
+        <div>$$ \frac{4-x}{3} \ge 2 $$</div>
+        <button class="btn no-print" onclick="toggleAnswer('a5')">Show Answer</button>
+        <div id="a5" class="answer-section">
+            <strong>Answer:</strong> \( x \le -2 \) <br>
+            <em>Multiply by 3: \(4 - x \ge 6\). Subtract 4: \(-x \ge 2\). Divide by -1 (flip sign): \(x \le -2\).</em>
+        </div>
+        <div class="working-space"></div>
+    </div>
+
+    <div class="question-container">
+        <div class="question-text">6. Write down the three inequalities that define the unshaded region R, where the boundaries are the x-axis, the y-axis, and a line passing through (0, 4) and (4, 0). (Topic 14.3)</div>
+        <button class="btn no-print" onclick="toggleAnswer('a6')">Show Answer</button>
+        <div id="a6" class="answer-section">
+            <strong>Answer:</strong> \( x \ge 0 \), \( y \ge 0 \), \( x + y \le 4 \) (or \( y \le -x + 4 \))
+        </div>
+        <div class="working-space"></div>
+    </div>
+
+    <div class="question-container">
+        <div class="question-text">7. Find the point with integer coordinates \((x, y)\) that lies inside the region defined by \(y > x\), \(y < 4\) and \(x > 1\). (Topic 14.3)</div>
+        <button class="btn no-print" onclick="toggleAnswer('a7')">Show Answer</button>
+        <div id="a7" class="answer-section">
+            <strong>Answer:</strong> \( (2, 3) \) <br>
+            <em>Since x must be > 1, x can be 2. If x=2, y must be > 2 and < 4. So y=3.</em>
+        </div>
+        <div class="working-space"></div>
+    </div>
+
+    <div class="question-container">
+        <div class="question-text">8. Write \( x^2 + 6x - 7 \) in the form \( (x+a)^2 + b \). (Topic 14.4)</div>
+        <button class="btn no-print" onclick="toggleAnswer('a8')">Show Answer</button>
+        <div id="a8" class="answer-section">
+            <strong>Answer:</strong> \( (x+3)^2 - 16 \) <br>
+            <em>Half of 6 is 3. \( (x+3)^2 = x^2 + 6x + 9 \). Subtract 9 and original 7: \(-9 - 7 = -16\).</em>
+        </div>
+        <div class="working-space"></div>
+    </div>
+
+    <div class="question-container">
+        <div class="question-text">9. Solve the equation \( x^2 - 8x + 5 = 0 \) by completing the square. Give your answers in exact form (using surds). (Topic 14.4)</div>
+        <button class="btn no-print" onclick="toggleAnswer('a9')">Show Answer</button>
+        <div id="a9" class="answer-section">
+            <strong>Answer:</strong> \( x = 4 \pm \sqrt{11} \) <br>
+            <em>\( (x-4)^2 - 16 + 5 = 0 \Rightarrow (x-4)^2 = 11 \Rightarrow x - 4 = \pm\sqrt{11} \)</em>
+        </div>
+        <div class="working-space"></div>
+    </div>
+
+    <div class="question-container">
+        <div class="question-text">10. Find the coordinates of the minimum point of the graph \( y = x^2 + 10x + 30 \) by completing the square. (Topic 14.4)</div>
+        <button class="btn no-print" onclick="toggleAnswer('a10')">Show Answer</button>
+        <div id="a10" class="answer-section">
+            <strong>Answer:</strong> Minimum at \( (-5, 5) \) <br>
+            <em>Equation becomes \( y = (x+5)^2 + 5 \).</em>
+        </div>
+        <div class="working-space"></div>
+    </div>
+
+    <div class="question-container">
+        <div class="question-text">11. Solve \( 2x^2 + 5x - 4 = 0 \) using the quadratic formula. Show all working and give your answers correct to 2 decimal places. (Topic 14.5)</div>
+        <button class="btn no-print" onclick="toggleAnswer('a11')">Show Answer</button>
+        <div id="a11" class="answer-section">
+            <strong>Answer:</strong> \( x = 0.64 \) or \( x = -3.14 \) <br>
+            <em>Formula: \( x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \). \( x = \frac{-5 \pm \sqrt{25 - 4(2)(-4)}}{4} = \frac{-5 \pm \sqrt{57}}{4} \)</em>
+        </div>
+        <div class="working-space"></div>
+    </div>
+
+    <div class="question-container">
+        <div class="question-text">12. A rectangle has a length of \( (x+3) \) cm and a width of \( x \) cm. The area of the rectangle is 15 cm². Form an equation and solve it to find the value of \( x \) correct to 3 significant figures. (Topic 14.5)</div>
+        <button class="btn no-print" onclick="toggleAnswer('a12')">Show Answer</button>
+        <div id="a12" class="answer-section">
+            <strong>Answer:</strong> \( x = 2.68 \) <br>
+            <em>Eq: \( x(x+3) = 15 \Rightarrow x^2 + 3x - 15 = 0 \). Use quadratic formula. Positive x only.</em>
+        </div>
+        <div class="working-space"></div>
+    </div>
+
+    <div class="question-container">
+        <div class="question-text">13. Factorise completely: \( 2x^2 + 7x + 3 \). (Topic 14.6)</div>
+        <button class="btn no-print" onclick="toggleAnswer('a13')">Show Answer</button>
+        <div id="a13" class="answer-section">
+            <strong>Answer:</strong> \( (2x + 1)(x + 3) \)
+        </div>
+        <div class="working-space" style="height: 100px;"></div>
+    </div>
+
+    <div class="question-container">
+        <div class="question-text">14. Factorise completely: \( 6x^2 - 11x - 10 \). (Topic 14.6)</div>
+        <button class="btn no-print" onclick="toggleAnswer('a14')">Show Answer</button>
+        <div id="a14" class="answer-section">
+            <strong>Answer:</strong> \( (3x + 2)(2x - 5) \)
+        </div>
+        <div class="working-space" style="height: 100px;"></div>
+    </div>
+
+    <div class="question-container">
+        <div class="question-text">15. Factorise completely: \( 8x^2 - 18 \). (Topic 14.6)</div>
+        <button class="btn no-print" onclick="toggleAnswer('a15')">Show Answer</button>
+        <div id="a15" class="answer-section">
+            <strong>Answer:</strong> \( 2(2x - 3)(2x + 3) \) <br>
+            <em>First take out factor 2: \( 2(4x^2 - 9) \). Then use difference of squares.</em>
+        </div>
+        <div class="working-space" style="height: 100px;"></div>
+    </div>
+
+    <div class="question-container">
+        <div class="question-text">16. Simplify the algebraic fraction. (Topic 14.7)</div>
+        <div>$$ \frac{x^2 - 9}{2x^2 + 6x} $$</div>
+        <button class="btn no-print" onclick="toggleAnswer('a16')">Show Answer</button>
+        <div id="a16" class="answer-section">
+            <strong>Answer:</strong> \( \frac{x-3}{2x} \) <br>
+            <em>Factorise numerator: \((x-3)(x+3)\). Factorise denominator: \(2x(x+3)\). Cancel \((x+3)\).</em>
+        </div>
+        <div class="working-space"></div>
+    </div>
+
+    <div class="question-container">
+        <div class="question-text">17. Write as a single fraction in its simplest form. (Topic 14.7)</div>
+        <div>$$ \frac{3}{x+2} + \frac{4}{x-1} $$</div>
+        <button class="btn no-print" onclick="toggleAnswer('a17')">Show Answer</button>
+        <div id="a17" class="answer-section">
+            <strong>Answer:</strong> \( \frac{7x + 5}{(x+2)(x-1)} \) <br>
+            <em>Num: \( 3(x-1) + 4(x+2) = 3x - 3 + 4x + 8 = 7x + 5 \).</em>
+        </div>
+        <div class="working-space"></div>
+    </div>
+
+    <div class="question-container">
+        <div class="question-text">18. Solve the equation. (Topic 14.7)</div>
+        <div>$$ \frac{x}{3} + \frac{x-2}{5} = 4 $$</div>
+        <button class="btn no-print" onclick="toggleAnswer('a18')">Show Answer</button>
+        <div id="a18" class="answer-section">
+            <strong>Answer:</strong> \( x = 6.75 \) (or \( \frac{27}{4} \)) <br>
+            <em>Common denom 15: \( 5x + 3(x-2) = 60 \Rightarrow 8x - 6 = 60 \Rightarrow 8x = 66 \).</em>
+        </div>
+        <div class="working-space"></div>
+    </div>
+
+    <div class="question-container">
+        <div class="question-text">19. Solve the equation. (Topic 14.7)</div>
+        <div>$$ \frac{2}{x-1} - \frac{3}{x+2} = 0 $$</div>
+        <button class="btn no-print" onclick="toggleAnswer('a19')">Show Answer</button>
+        <div id="a19" class="answer-section">
+            <strong>Answer:</strong> \( x = 7 \) <br>
+            <em>Move to sides: \( \frac{2}{x-1} = \frac{3}{x+2} \). Cross multiply: \( 2(x+2) = 3(x-1) \Rightarrow 2x + 4 = 3x - 3 \).</em>
+        </div>
+        <div class="working-space"></div>
+    </div>
+
+    <div class="question-container">
+        <div class="question-text">20. (Challenge) Solve for \(x\). Give your answers to 2 decimal places. (Topics 14.5 & 14.7)</div>
+        <div>$$ x + \frac{4}{x} = 7 $$</div>
+        <button class="btn no-print" onclick="toggleAnswer('a20')">Show Answer</button>
+        <div id="a20" class="answer-section">
+            <strong>Answer:</strong> \( x = 6.37 \) or \( x = 0.63 \) <br>
+            <em>Multiply by x: \( x^2 + 4 = 7x \Rightarrow x^2 - 7x + 4 = 0 \). Use quadratic formula.</em>
+        </div>
+        <div class="working-space"></div>
+    </div>
+
+    <script>
+        function toggleAnswer(id) {
+            var x = document.getElementById(id);
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+
+        function toggleAllAnswers() {
+            var answers = document.getElementsByClassName("answer-section");
+            var allVisible = true;
+            
+            // Check if all are currently visible
+            for (var i = 0; i < answers.length; i++) {
+                if (answers[i].style.display !== "block") {
+                    allVisible = false;
+                    break;
+                }
+            }
+
+            // Toggle based on state
+            for (var i = 0; i < answers.length; i++) {
+                answers[i].style.display = allVisible ? "none" : "block";
+            }
+        }
+    </script>
+</body>
+</html>

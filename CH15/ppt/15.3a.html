@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15.3a SOH CAH TOA Practice</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 40px; line-height: 1.5; color: #333; }
+        .page-header { text-align: center; font-size: 0.95em; color: #555; border-bottom: 1px solid #ddd; padding-bottom: 6px; margin-bottom: 12px; }
+        .page-footer { text-align: center; font-size: 0.95em; color: #555; border-top: 1px solid #ddd; padding-top: 6px; margin-top: 12px; }
+        .header-info { border-bottom: 2px solid #d35400; padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .student-field { border-bottom: 1px solid #999; width: 150px; display: inline-block; }
+        h1 { text-align: center; color: #d35400; font-size: 1.8em; margin: 10px 0; }
+        h2 { color: #e67e22; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 25px; font-size: 1.3em; }
+        .page-title { text-align: center; color: #e67e22; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 5px; font-size: 1.4em; }
+        .intro-box { background: #fdf2e9; border-left: 4px solid #d35400; padding: 15px; font-size: 0.95em; }
+        .step-box { border: 1px solid #e67e22; background: #fff; padding: 10px; border-radius: 5px; margin-bottom: 10px; }
+        .vocab { font-weight: bold; color: #c0392b; }
+        .question-container { margin-bottom: 15px; break-inside: avoid; border: 1px solid #eee; padding: 10px; border-radius: 4px; }
+        .working-space { height: 80px; border: 1px dashed #ccc; background: #fffdfc; margin-top: 8px; }
+        .hw-space { height: 110px; }
+        .answer-box { background: #e8f5e9; padding: 8px; border-left: 4px solid #27ae60; display: none; margin-top: 8px; font-size: 0.9em; }
+        .btn { background: #e67e22; color: white; border: none; padding: 4px 10px; cursor: pointer; border-radius: 3px; font-size: 0.8em; margin-top: 5px; }
+        .page-break { page-break-before: always; }
+        .triangle-label-row { display: flex; justify-content: space-around; gap: 10px; margin-top: 10px; }
+        .label-item { text-align: center; }
+        .intro-note { font-style: italic; color: #555; margin-top: 8px; }
+        .print-controls { background: #f0f0f0; padding: 15px; border-radius: 8px; text-align: center; margin: 20px 0; border: 2px solid #e67e22; }
+        .print-controls label { font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-size: 1.1em; }
+        .print-controls input[type="checkbox"] { width: 20px; height: 20px; cursor: pointer; }
+        @media print { 
+            .no-print, .btn { display: none !important; } 
+            .working-space { border: 1px solid #eee; } 
+            body { padding: 0; } 
+            .answer-box { display: none !important; }
+            body.print-answers .answer-box { display: block !important; background: #f0f0f0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="print-controls no-print">
+        <label>
+            <input type="checkbox" id="printAnswers" onchange="togglePrintAnswers()">
+            🖨️ Print with Answers (check before printing)
+        </label>
+    </div>
+
+    <div class="page-header">IGCSE Mathematics (0580) - Chapter 15.3a: SOH CAH TOA Practice</div>
+    <div class="header-info">
+        <div><strong>Chapter 15.3a: SOH CAH TOA Practice</strong><br>IGCSE Mathematics (0580)</div>
+        <div style="text-align: right;">
+            Name: <span class="student-field"></span><br>
+            Date: <span class="student-field"></span>
+        </div>
+    </div>
+
+    <h2>Part 1: The 3 Steps to Success</h2>
+    <div class="intro-box">
+        <p>If you are stuck, always follow these 3 steps:</p>
+        <div class="step-box">
+            <strong>Step 1: Label the sides (H, O, A)</strong><br>
+            - <strong>H</strong>ypotenuse: Longest side, opposite the right angle.<br>
+            - <strong>O</strong>pposite: Across from the angle you are looking at.<br>
+            - <strong>A</strong>djacent: Next to the angle (touching it).
+        </div>
+        <div class="step-box">
+            <strong>Step 2: Choose the Ratio</strong><br>
+            - Have/Need <strong>O</strong> and <strong>H</strong>? Use <strong>SOH</strong> (\( \sin \)).<br>
+            - Have/Need <strong>A</strong> and <strong>H</strong>? Use <strong>CAH</strong> (\( \cos \)).<br>
+            - Have/Need <strong>O</strong> and <strong>A</strong>? Use <strong>TOA</strong> (\( \tan \)).
+        </div>
+        <div class="step-box">
+            <strong>Step 3: Calculate</strong><br>
+            - Finding a <strong>Side</strong>? Use standard sin/cos/tan.<br>
+            - Finding an <strong>Angle</strong>? Use \( \sin^{-1} \), \( \cos^{-1} \), or \( \tan^{-1} \) (Shift Key).
+        </div>
+        <div class="intro-note">Diagram: Right-angled triangle with sides labeled Hypotenuse, Opposite, Adjacent relative to an angle \( \theta \).</div>
+    </div>
+
+    <h2>Part 2: Guided Drills (Step-by-Step)</h2>
+    <div class="question-container">
+        <div><strong>Drill 1. (Labeling)</strong> Look at angle \( x \). Identify which side is the Hypotenuse (H), Opposite (O), and Adjacent (A). <br>
+        <em>Triangle sides: AC is the longest side. AB = 3, BC = 4, AC = 5. Angle \( x \) is at A.</em></div>
+        <div class="triangle-label-row">
+            <div class="label-item">Side AC (5) is: <br>__________</div>
+            <div class="label-item">Side BC (4) is: <br>__________</div>
+            <div class="label-item">Side AB (3) is: <br>__________</div>
+        </div>
+        <div class="working-space"></div>
+        <button class="btn no-print" onclick="toggle('a1')">Show Answer</button>
+        <div id="a1" class="answer-box">AC = Hypotenuse (H), BC = Opposite (O), AB = Adjacent (A).</div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Drill 2. (Choosing Ratio)</strong> Which button do you press on the calculator? <br>
+        (a) You know the <strong>Opposite</strong> and want the <strong>Hypotenuse</strong>. <br>
+        (b) You know the <strong>Opposite</strong> and the <strong>Adjacent</strong>.</div>
+        <div class="working-space" style="height: 50px;"></div>
+        <button class="btn no-print" onclick="toggle('a2')">Show Answer</button>
+        <div id="a2" class="answer-box">(a) SOH -> <strong>sin</strong>. &nbsp;&nbsp; (b) TOA -> <strong>tan</strong>.</div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Drill 3. (Calculation Check)</strong> Solve for \( x \) to 2 decimal places. <br>
+        $$ \cos(30^\circ) = \frac{x}{12} $$</div>
+        <div class="working-space"></div>
+        <button class="btn no-print" onclick="toggle('a3')">Show Answer</button>
+        <div id="a3" class="answer-box">Multiply by 12: \( x = 12 \times \cos(30) \approx 10.39 \).</div>
+    </div>
+
+    <div class="page-footer">IGCSE Mathematics (0580) - Chapter 15.3a: SOH CAH TOA Practice - Page 1</div>
+    <div class="page-break"></div>
+
+    <div class="page-header">IGCSE Mathematics (0580) - Chapter 15.3a: SOH CAH TOA Practice</div>
+    <h2 class="page-title">Part 3: Homework Practice</h2>
+
+    <div class="question-container">
+        <div><strong>Q1. (Find Side)</strong> In a right-angled triangle, the angle is \( 50^\circ \) and the Hypotenuse is 20 cm. Calculate the length of the <strong>Opposite</strong> side.</div>
+        <div style="font-size: 0.9em; color: #666;">Step 1: Label (H=20, O=?). Step 2: Choose (SOH). Step 3: Solve.</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h1')">Show Answer</button>
+        <div id="h1" class="answer-box">
+            \( \sin(50) = \frac{x}{20} \). <br>
+            \( x = 20 \times \sin(50) \approx 15.32 \text{ cm} \).
+        </div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q2. (Find Hypotenuse)</strong> Angle = \( 60^\circ \), Adjacent = 10 cm. Find the Hypotenuse (\( x \)). <br>
+        <em>Hint: The \( x \) will be on the bottom of the fraction!</em></div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h2')">Show Answer</button>
+        <div id="h2" class="answer-box">
+            Use CAH. \( \cos(60) = \frac{10}{x} \). <br>
+            Swap \( x \) and \( \cos(60) \): \( x = \frac{10}{\cos(60)} \). <br>
+            \( x = 20 \text{ cm} \).
+        </div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q3. (Find Angle)</strong> Opposite = 15, Adjacent = 20. Find angle \( \theta \). <br>
+        <em>Remember: To find an angle, you need the "Shift" key.</em></div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h3')">Show Answer</button>
+        <div id="h3" class="answer-box">
+            Use TOA. \( \tan(\theta) = \frac{15}{20} = 0.75 \). <br>
+            \( \theta = \tan^{-1}(0.75) \approx 36.9^\circ \).
+        </div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q4. (Real Life)</strong> A ladder 5 meters long is placed against a wall. The foot of the ladder is 1.5 meters from the wall. <br>
+        (a) Label the triangle (Hyp = 5, Adj = 1.5). <br>
+        (b) Calculate the angle the ladder makes with the ground.</div>
+        <div class="working-space hw-space" style="height: 140px;"></div>
+        <button class="btn no-print" onclick="toggle('h4')">Show Answer</button>
+        <div id="h4" class="answer-box">
+            We have A and H. Use Cos. <br>
+            \( \cos(x) = \frac{1.5}{5} = 0.3 \). <br>
+            \( x = \cos^{-1}(0.3) \approx 72.5^\circ \).
+        </div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q5. (Self Check)</strong> Why is \( \sin(90^\circ) = 1 \)? <br>
+        <em>(Think: In a right-angled triangle, if the angle opens up to 90^\circ, what happens to the Opposite side compared to the Hypotenuse?)</em></div>
+        <div class="working-space hw-space" style="height: 60px;"></div>
+        <button class="btn no-print" onclick="toggle('h5')">Show Answer</button>
+        <div id="h5" class="answer-box">
+            At 90^\circ, the Opposite side becomes exactly the same length as the Hypotenuse. <br>
+            Since \( \sin = Opp/Hyp \), and they are equal, the result is 1.
+        </div>
+    </div>
+
+    <div class="page-footer">IGCSE Mathematics (0580) - Chapter 15.3a: SOH CAH TOA Practice - Page 2</div>
+
+    <script>
+        function toggle(id){var x=document.getElementById(id);x.style.display=x.style.display==='block'?'none':'block';}
+        function togglePrintAnswers(){document.body.classList.toggle('print-answers',document.getElementById('printAnswers').checked);}
+    </script>
+</body>
+</html>

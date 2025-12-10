@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15.1 Scale Drawings</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 40px; line-height: 1.5; color: #333; }
+        .header-info { border-bottom: 2px solid #2c3e50; padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .student-field { border-bottom: 1px solid #999; width: 150px; display: inline-block; }
+        h1 { text-align: center; color: #2c3e50; font-size: 1.8em; margin: 10px 0; }
+        h2 { color: #2980b9; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 25px; font-size: 1.3em; }
+        .intro-box { background: #f8f9fa; border-left: 4px solid #2980b9; padding: 15px; font-size: 0.95em; }
+        .vocab { font-weight: bold; color: #c0392b; }
+        .question-container { margin-bottom: 15px; break-inside: avoid; border: 1px solid #eee; padding: 10px; border-radius: 4px; }
+        .working-space { height: 80px; border: 1px dashed #ccc; background: #fffdfc; margin-top: 8px; }
+        .hw-space { height: 110px; } /* Taller space for homework */
+        .answer-box { background: #e8f5e9; padding: 8px; border-left: 4px solid #27ae60; display: none; margin-top: 8px; font-size: 0.9em; }
+        .btn { background: #3498db; color: white; border: none; padding: 4px 10px; cursor: pointer; border-radius: 3px; font-size: 0.8em; margin-top: 5px; }
+        .page-break { page-break-before: always; }
+        .footer { text-align: center; font-size: 0.8em; color: #777; margin-top: 20px; }
+        .print-controls { background: #f0f0f0; padding: 15px; border-radius: 8px; text-align: center; margin: 20px 0; border: 2px solid #3498db; }
+        .print-controls label { font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-size: 1.1em; }
+        .print-controls input[type="checkbox"] { width: 20px; height: 20px; cursor: pointer; }
+        @media print { 
+            .no-print, .btn { display: none !important; } 
+            .working-space { border: 1px solid #eee; } 
+            body { padding: 0; } 
+            .answer-box { display: none !important; }
+            body.print-answers .answer-box { display: block !important; background: #f0f0f0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="print-controls no-print">
+        <label>
+            <input type="checkbox" id="printAnswers" onchange="togglePrintAnswers()">
+            🖨️ Print with Answers (check before printing)
+        </label>
+    </div>
+
+    <div class="header-info">
+        <div><strong>Chapter 15.1: Scale Drawings</strong><br>IGCSE Mathematics (0580)</div>
+        <div style="text-align: right;">
+            Name: <span class="student-field"></span><br>
+            Date: <span class="student-field"></span>
+        </div>
+    </div>
+
+    <h2>Part 1: Key Concepts</h2>
+    <div class="intro-box">
+        <p><strong>1. Scale Ratio (\(1:n\)):</strong> Represents the relationship between the drawing and real life.</p>
+        <ul>
+            <li>\( 1 : n \) means <strong>1 unit</strong> on the map = <strong>n units</strong> in reality.</li>
+            <li><strong>Important:</strong> Units must be consistent before writing the ratio! (e.g., both in cm).</li>
+        </ul>
+        <p><strong>2. Unit Conversions (Memorize):</strong></p>
+        <ul>
+            <li>1 km = 1000 m = <strong>100,000 cm</strong></li>
+            <li>1 m = 100 cm</li>
+        </ul>
+        <p><strong>3. Area Scale Factor (Advanced):</strong> If the linear scale is \( 1:n \), the area scale is \( 1 : n^2 \).</p>
+    </div>
+
+    <h2>Part 2: In-Class Examples</h2>
+    <div class="question-container">
+        <div><strong>Ex 1.</strong> A map has a scale of \( 1 : 200,000 \). The distance between two towns on the map is 4.5 cm. Calculate the actual distance in km.</div>
+        <div class="working-space"></div>
+        <button class="btn no-print" onclick="toggle('a1')">Show Answer</button>
+        <div id="a1" class="answer-box">\( 4.5 \times 200,000 = 900,000 \text{ cm} \). Divide by 100,000 = <strong>9 km</strong>.</div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Ex 2.</strong> A real soccer pitch is 100m long. On a drawing, it is 20cm long. Find the scale of the drawing in the form \( 1:n \).</div>
+        <div class="working-space"></div>
+        <button class="btn no-print" onclick="toggle('a2')">Show Answer</button>
+        <div id="a2" class="answer-box">100m = 10,000cm. Ratio \( 20 : 10,000 \). Divide by 20 \( \rightarrow \) <strong>1 : 500</strong>.</div>
+    </div>
+
+    <div class="footer">Page 1</div>
+    <div class="page-break"></div>
+
+    <div class="header-info">
+        <div><strong>Part 3: Homework Practice</strong></div>
+        <div>Chapter 15.1</div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q1. (Basic)</strong> A map has a scale of \( 1 : 50,000 \). Calculate the actual distance, in kilometers, represented by a length of 8 cm on the map.</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h1')">Show Answer</button>
+        <div id="h1" class="answer-box">\( 8 \times 50,000 = 400,000 \text{ cm} = 4 \text{ km} \).</div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q2. (Reverse)</strong> The actual distance between Paris and London is approximately 340 km. Calculate the distance between these two cities on a map with a scale of \( 1 : 10,000,000 \). Give your answer in <strong>centimeters</strong>.</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h2')">Show Answer</button>
+        <div id="h2" class="answer-box">\( 340 \text{ km} = 34,000,000 \text{ cm} \). <br> \( 34,000,000 \div 10,000,000 = 3.4 \text{ cm} \).</div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q3. (Finding Scale)</strong> A model of a building is 15 cm tall. The actual building is 30 meters tall. Write the scale of the model in the form \( 1 : n \).</div>
+        <div class="working-space hw-space"></div>
+        <button class="btn no-print" onclick="toggle('h3')">Show Answer</button>
+        <div id="h3" class="answer-box">\( 30 \text{ m} = 3000 \text{ cm} \). Ratio \( 15 : 3000 \). Divide by 15 \( \rightarrow \) <strong>1 : 200</strong>.</div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q4. (Area Problem)</strong> A map has a scale of \( 1 : 20,000 \). A lake on the map has an area of \( 5 \text{ cm}^2 \). Calculate the <strong>actual area</strong> of the lake in square kilometers (\( \text{km}^2 \)). <br><em>Hint: Convert the scale to \( 1 \text{ cm} = \text{?} \text{ km} \) first, then square it.</em></div>
+        <div class="working-space hw-space" style="height: 140px;"></div>
+        <button class="btn no-print" onclick="toggle('h4')">Show Answer</button>
+        <div id="h4" class="answer-box">
+            Method 1: Linear scale \( 1 \text{ cm} = 0.2 \text{ km} \). <br>
+            Area scale = \( (0.2)^2 = 0.04 \text{ km}^2 \) per \( \text{cm}^2 \). <br>
+            Total Area = \( 5 \times 0.04 = <strong>0.2 km}^2</strong> \).
+        </div>
+    </div>
+
+    <div class="question-container">
+        <div><strong>Q5. (Challenge)</strong> A rectangular swimming pool measures 25m by 12m. On a scale drawing, the longer side is 10 cm. <br>(a) Find the scale. <br>(b) Calculate the width of the pool on the drawing.</div>
+        <div class="working-space hw-space" style="height: 140px;"></div>
+        <button class="btn no-print" onclick="toggle('h5')">Show Answer</button>
+        <div id="h5" class="answer-box">
+            (a) \( 25 \text{ m} = 2500 \text{ cm} \). Ratio \( 10:2500 = 1:250 \). <br>
+            (b) Width \( 12 \text{ m} = 1200 \text{ cm} \). \( 1200 \div 250 = 4.8 \text{ cm} \).
+        </div>
+    </div>
+
+    <div class="footer">Page 2</div>
+
+    <script>
+        function toggle(id){var x=document.getElementById(id);x.style.display=x.style.display==='block'?'none':'block';}
+        function togglePrintAnswers(){document.body.classList.toggle('print-answers',document.getElementById('printAnswers').checked);}
+    </script>
+</body>
+</html>

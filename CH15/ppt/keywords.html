@@ -3,70 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ch14 & 15 Vocab Quiz (Shuffle & Print)</title>
+    <title>Ch14 & 15 Vocabulary: Select & Fill</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 850px; margin: 0 auto; padding: 40px; color: #333; counter-reset: q-counter; }
-        .header-info { border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: flex-end; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 40px; color: #333; counter-reset: q-counter; }
+        .header-info { border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; }
         .student-field { border-bottom: 1px solid #333; width: 150px; display: inline-block; }
-        h1 { text-align: center; margin: 10px 0; font-size: 1.8em; }
-        h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 30px; color: #2c3e50; }
+        h1 { text-align: center; margin: 10px 0; font-size: 1.8em; color: #2c3e50; }
+        h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 40px; color: #d35400; font-size: 1.4em; }
         
-        /* Controls Area (Hidden on Print) */
+        /* Controls */
         .controls { 
-            background: #f0f0f0; padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 30px; border: 1px solid #ddd;
+            background: #f8f9fa; padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 30px; border: 1px solid #ddd;
             display: flex; justify-content: center; gap: 20px; align-items: center;
         }
-        .btn { background: #2c3e50; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; font-size: 0.9em; font-weight: bold; }
+        .btn { background: #2c3e50; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; font-weight: bold; }
         .btn:hover { background: #34495e; }
-        .btn-shuffle { background: #e67e22; }
-        .btn-shuffle:hover { background: #d35400; }
+        .btn-shuffle { background: #27ae60; }
+        .btn-shuffle:hover { background: #219150; }
         .toggle-label { font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 5px; }
 
-        /* Question Styles with Auto-Numbering */
-        .question-row { margin-bottom: 15px; display: flex; align-items: baseline; font-size: 1.05em; line-height: 1.8; }
+        /* Word Bank Styles */
+        .word-bank {
+            background: #eef2f3;
+            border: 2px dashed #bdc3c7;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .word-item {
+            background: #fff;
+            padding: 5px 12px;
+            border: 1px solid #95a5a6;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 0.95em;
+        }
+        
+        /* Question Styles */
+        .question-container { display: flex; flex-direction: column; gap: 15px; }
+        .question-row { font-size: 1.1em; line-height: 1.8; break-inside: avoid; }
         .question-row::before {
             counter-increment: q-counter;
             content: counter(q-counter) ". ";
             font-weight: bold;
-            min-width: 25px;
+            color: #d35400;
         }
-
         .blank-line {
             display: inline-block;
-            border-bottom: 1px solid #000;
-            width: 200px;
-            margin: 0 10px;
+            border-bottom: 2px solid #333;
+            min-width: 150px;
+            padding: 0 5px;
             text-align: center;
             color: #c0392b;
             font-weight: bold;
-            min-height: 24px;
+            font-family: 'Courier New', monospace;
         }
         
-        /* Table Styles */
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        tr.q-row { counter-increment: q-counter; }
-        td { padding: 10px; border-bottom: 1px dashed #ccc; vertical-align: bottom; }
+        /* Answer Logic */
+        .answer-text { display: none; }
+        body.show-answers .answer-text { display: inline; }
         
-        .cn-term::before {
-            content: counter(q-counter) ". ";
-            font-weight: bold;
-            margin-right: 5px;
-        }
-        .cn-term { width: 35%; font-weight: bold; color: #555; }
-        .en-blank { width: 65%; border-bottom: 1px solid #000; height: 30px; color: #c0392b; font-weight: bold; padding-left: 10px; position: relative; }
-        
-        /* Answer Visibility Logic */
-        .answer { visibility: hidden; } /* Default hidden */
-        body.show-screen-answers .answer { visibility: visible; } /* Screen toggle */
-
         @media print {
             .no-print { display: none !important; }
+            .word-bank { border: 1px solid #999; background: #fff; }
             body { padding: 0; }
-            /* Print Logic */
-            body .answer { visibility: hidden; } /* Default print hidden */
-            body.print-with-answers .answer { visibility: visible !important; } /* Print visible if checked */
+            body.print-with-answers .answer-text { display: inline !important; }
         }
     </style>
 </head>
@@ -74,7 +82,7 @@
 
     <div class="controls no-print">
         <button class="btn btn-shuffle" onclick="shuffleAll()">🔀 Shuffle Questions</button>
-        <button class="btn" onclick="document.body.classList.toggle('show-screen-answers')">👁️ Show/Hide Answers (Screen)</button>
+        <button class="btn" onclick="document.body.classList.toggle('show-answers')">👁️ Show/Hide Answers</button>
         <label class="toggle-label">
             <input type="checkbox" id="printCheck" onchange="togglePrintMode()"> 
             🖨️ Print WITH Answers
@@ -82,70 +90,94 @@
     </div>
 
     <div class="header-info">
-        <div><strong>Vocabulary Quiz: Chapters 14 & 15</strong><br>IGCSE Mathematics (0580)</div>
+        <div><strong>Math Vocabulary Quiz: Word Bank</strong><br>IGCSE Mathematics (0580)</div>
         <div style="text-align: right;">
             Name: <span class="student-field"></span><br>
             Date: <span class="student-field"></span><br>
-            Score: <span class="student-field"></span> / 18
+            Score: <span class="student-field"></span> / 20
         </div>
     </div>
 
-    <h1>Mathematical Vocabulary Dictation</h1>
+    <h1>Vocabulary Select & Fill</h1>
 
-    <h2>Part 1: Concept Completion</h2>
-    <p style="font-style: italic; color: #666; margin-bottom: 20px;">Read the definition and write the English term.</p>
-
-    <div id="part1-container">
-        <div class="question-row">Two or more linear equations that are solved at the same time are called <span class="blank-line"><span class="answer">Simultaneous</span></span> equations.</div>
-        <div class="question-row">In the algebraic fraction \( \frac{a}{b} \), the top part \( a \) is the numerator, and the bottom part \( b \) is the <span class="blank-line"><span class="answer">Denominator</span></span>.</div>
-        <div class="question-row">The formula \( x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \) is known as the <span class="blank-line"><span class="answer">Quadratic</span></span> formula.</div>
-        <div class="question-row">The longest side of a right-angled triangle, opposite the right angle, is called the <span class="blank-line"><span class="answer">Hypotenuse</span></span>.</div>
-        <div class="question-row">Bearings are always measured in a <span class="blank-line"><span class="answer">Clockwise</span></span> direction from the North line.</div>
-        <div class="question-row">The method of changing \( x^2 + 6x \) into the form \( (x+3)^2 - 9 \) is called <span class="blank-line"><span class="answer">Completing</span></span> the square.</div>
-        <div class="question-row">A drawing where 1 cm represents 1 km in real life is called a <span class="blank-line"><span class="answer">Scale</span></span> drawing.</div>
+    <h2>Part 1: Algebra (Chapter 14)</h2>
+    
+    <div class="word-bank">
+        <span class="word-item">Simultaneous</span>
+        <span class="word-item">Coefficient</span>
+        <span class="word-item">Region</span>
+        <span class="word-item">Eliminate</span>
+        <span class="word-item">Boundary</span>
+        <span class="word-item">Quadratic</span>
+        <span class="word-item">Numerator</span>
+        <span class="word-item">Denominator</span>
+        <span class="word-item">Factorise</span>
+        <span class="word-item">Inequality</span>
     </div>
 
-    <h2>Part 2: Terminology Check</h2>
-    <p style="font-style: italic; color: #666;">Translate the following Chinese terms into English.</p>
+    <div id="container-part1" class="question-container">
+        <div class="question-row">Two linear equations that are solved together to find \(x\) and \(y\) are called <span class="blank-line"><span class="answer-text">Simultaneous</span></span> equations.</div>
+        <div class="question-row">In the algebraic fraction \( \frac{3x}{x+1} \), the bottom part \( (x+1) \) is called the <span class="blank-line"><span class="answer-text">Denominator</span></span>.</div>
+        <div class="question-row">The number appearing before a variable (e.g., the 5 in \( 5x^2 \)) is called the <span class="blank-line"><span class="answer-text">Coefficient</span></span>.</div>
+        <div class="question-row">To remove a variable from a system of equations, we use the method to <span class="blank-line"><span class="answer-text">Eliminate</span></span> it.</div>
+        <div class="question-row">The formula \( x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \) is used to solve <span class="blank-line"><span class="answer-text">Quadratic</span></span> equations.</div>
+        <div class="question-row">A shaded area on a graph satisfying a set of inequalities is called a <span class="blank-line"><span class="answer-text">Region</span></span>.</div>
+        <div class="question-row">The process of putting an expression back into brackets (e.g., \( x^2-9 \to (x-3)(x+3) \)) is to <span class="blank-line"><span class="answer-text">Factorise</span></span>.</div>
+        <div class="question-row">The top part of a fraction is known as the <span class="blank-line"><span class="answer-text">Numerator</span></span>.</div>
+        <div class="question-row">The line \( y = 2x + 1 \) can act as a <span class="blank-line"><span class="answer-text">Boundary</span></span> for an inequality region.</div>
+        <div class="question-row">A mathematical statement using symbols like \( <, >, \le, \ge \) is called an <span class="blank-line"><span class="answer-text">Inequality</span></span>.</div>
+    </div>
 
-    <table>
-        <tbody id="part2-container">
-            <tr class="q-row"><td class="cn-term">线性不等式</td><td class="en-blank"><span class="answer">Linear inequality</span></td></tr>
-            <tr class="q-row"><td class="cn-term">区域 (如阴影部分)</td><td class="en-blank"><span class="answer">Region</span></td></tr>
-            <tr class="q-row"><td class="cn-term">系数 (如 3x 中的 3)</td><td class="en-blank"><span class="answer">Coefficient</span></td></tr>
-            <tr class="q-row"><td class="cn-term">消元法 (解方程)</td><td class="en-blank"><span class="answer">Eliminate / Elimination</span></td></tr>
-            <tr class="q-row"><td class="cn-term">邻边 (三角学)</td><td class="en-blank"><span class="answer">Adjacent</span></td></tr>
-            <tr class="q-row"><td class="cn-term">对边 (三角学)</td><td class="en-blank"><span class="answer">Opposite</span></td></tr>
-            <tr class="q-row"><td class="cn-term">余弦 (cos)</td><td class="en-blank"><span class="answer">Cosine</span></td></tr>
-            <tr class="q-row"><td class="cn-term">正切 (tan)</td><td class="en-blank"><span class="answer">Tangent</span></td></tr>
-            <tr class="q-row"><td class="cn-term">钝角 (>90度)</td><td class="en-blank"><span class="answer">Obtuse angle</span></td></tr>
-            <tr class="q-row"><td class="cn-term">边界 (不等式的线)</td><td class="en-blank"><span class="answer">Boundary</span></td></tr>
-            <tr class="q-row"><td class="cn-term">因式分解</td><td class="en-blank"><span class="answer">Factorise</span></td></tr>
-        </tbody>
-    </table>
+    <h2>Part 2: Geometry & Trigonometry (Chapter 15)</h2>
 
-    <div style="text-align: center; margin-top: 40px; font-size: 0.8em; color: #888;">
-        IGCSE Math Vocabulary Check | Chapters 14-15
+    <div class="word-bank">
+        <span class="word-item">Hypotenuse</span>
+        <span class="word-item">Bearing</span>
+        <span class="word-item">Clockwise</span>
+        <span class="word-item">Scale</span>
+        <span class="word-item">Elevation</span>
+        <span class="word-item">Depression</span>
+        <span class="word-item">Obtuse</span>
+        <span class="word-item">Tangent</span>
+        <span class="word-item">Adjacent</span>
+        <span class="word-item">Opposite</span>
+    </div>
+
+    <div id="container-part2" class="question-container">
+        <div class="question-row">The longest side of a right-angled triangle is always the <span class="blank-line"><span class="answer-text">Hypotenuse</span></span>.</div>
+        <div class="question-row">A direction given as an angle measured from North is called a <span class="blank-line"><span class="answer-text">Bearing</span></span>.</div>
+        <div class="question-row">Bearings must always be measured in a <span class="blank-line"><span class="answer-text">Clockwise</span></span> direction.</div>
+        <div class="question-row">An angle that is greater than \( 90^\circ \) but less than \( 180^\circ \) is an <span class="blank-line"><span class="answer-text">Obtuse</span></span> angle.</div>
+        <div class="question-row">Looking <strong>up</strong> at an object from the horizontal creates an angle of <span class="blank-line"><span class="answer-text">Elevation</span></span>.</div>
+        <div class="question-row">Looking <strong>down</strong> at an object from a height creates an angle of <span class="blank-line"><span class="answer-text">Depression</span></span>.</div>
+        <div class="question-row">A map uses a <span class="blank-line"><span class="answer-text">Scale</span></span> (e.g., 1 : 50000) to represent real-world distances.</div>
+        <div class="question-row">The trigonometric ratio defined as \( \frac{\text{Opposite}}{\text{Adjacent}} \) is <span class="blank-line"><span class="answer-text">Tangent</span></span>.</div>
+        <div class="question-row">The side touching the angle (but not the hypotenuse) is the <span class="blank-line"><span class="answer-text">Adjacent</span></span> side.</div>
+        <div class="question-row">The side directly across from the angle in question is the <span class="blank-line"><span class="answer-text">Opposite</span></span> side.</div>
+    </div>
+
+    <div style="text-align: center; margin-top: 50px; border-top: 1px solid #ccc; padding-top: 10px; color: #777; font-size: 0.8em;">
+        IGCSE Mathematics (0580) - Vocabulary Reinforcement
     </div>
 
     <script>
         // Shuffle Logic
         function shuffleAll() {
-            shuffleContainer('part1-container');
-            shuffleContainer('part2-container');
+            shuffleContainer('container-part1');
+            shuffleContainer('container-part2');
         }
 
         function shuffleContainer(id) {
             const container = document.getElementById(id);
             const elements = Array.from(container.children);
             
-            // Fisher-Yates Shuffle Algorithm
+            // Fisher-Yates Shuffle
             for (let i = elements.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [elements[i], elements[j]] = [elements[j], elements[i]];
             }
 
-            // Re-append elements (CSS counters will handle re-numbering automatically)
+            // Re-append to DOM
             elements.forEach(el => container.appendChild(el));
         }
 
